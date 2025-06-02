@@ -6,14 +6,14 @@ Oral AI Project
 Oral AI is an innovative project focused on diagnosing oral health issues using AI technology. It includes user authentication, personal information collection, photo capture, validation, storage, diagnosis generation, and history management. Collaborate seamlessly using GitHub for efficient development and deployment.
 
 Tasks---API Endpoints:
-User Registration
-Login
-Update User Information
-Retrieve User Information
-Upload Teeth Photos
-Analyze Photos
-List Mask Image Channel Values
-Get Analysis History
+User Registration<br>
+Login<br>
+Update User Information<br>
+Retrieve User Information<br>
+Upload Teeth Photos<br>
+Analyze Photos<br>
+List Mask Image Channel Values<br>
+Get Analysis History<br>
 
 The structure of the backend dev is shown below:
 myoral_backend/<br>
