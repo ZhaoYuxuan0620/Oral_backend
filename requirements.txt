@@ -1,0 +1,23 @@
+
+# Web 框架 & 异步处理 
+fastapi==0.104.1        # REST API 核心框架 
+uvicorn[standard]==0.23.2  # ASGI 高性能服务器
+httpx==0.27.0           # 异步 HTTP 客户端（测试用）
+pydantic[email]  # 异步邮件发送
+ 
+# 数据建模 & 验证
+pydantic-settings==2.0.3 # 环境变量强类型管理 
+python-multipart==0.0.6  # 支持照片文件上传 
+ 
+# 数据库 & ORM 
+sqlalchemy==2.0.21       # ORM 核心 
+asyncpg==0.28.0          # PostgreSQL 异步驱动 
+alembic==1.12.0          # 数据库迁移工具 
+ 
+# 安全 & 认证 
+passlib[bcrypt]==1.7.4   # 密码哈希加密
+python-jose[cryptography]==3.3.0  # JWT 令牌生成 
+python-dotenv==1.0.0     # .env 环境加载 
+ 
+# 文件处理
+pillow==10.0.1           # 牙齿照片格式/尺寸验证
