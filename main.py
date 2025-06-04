@@ -6,7 +6,7 @@ from typing import Optional, List
 app = FastAPI()
  
 # 内存模拟数据库
-# 使用postgreSQL或其他数据库时
+# 使用postgreSQL或MongoDB时
 fake_db = []
  
 # 请求模型
