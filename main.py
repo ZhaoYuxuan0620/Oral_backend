@@ -13,7 +13,7 @@ from database import (
 # FastAPI应用
 app = FastAPI()
  
-# 请求模型
+# request模型
 class UserRegistration(BaseModel):
     email: str
     phoneNumber: str
