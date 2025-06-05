@@ -5,6 +5,7 @@ from datetime import datetime
 
 # Database URL (replace with your PostgreSQL credentials)
 #using NeonDB as an example
+#need another database
 DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-still-brook-a1o2ku0m-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 
 # SQLAlchemy setup for ORM (sync only)
