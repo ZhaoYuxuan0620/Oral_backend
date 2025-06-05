@@ -49,6 +49,7 @@ def insert_user(user_data: dict, db):
     db.refresh(user)
     return user
 
+#next step: try to combine the functions below?
 def fetch_user_by_email(email: str, db):
     return db.query(User).filter(User.email == email).first()
 
