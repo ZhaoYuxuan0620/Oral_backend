@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status, Depends, File, UploadFile, Form
+from fastapi import FastAPI, HTTPException, status, Depends, File, UploadFile, Form, Response
 from pydantic import BaseModel
 import uuid
 from datetime import datetime, timezone, timedelta
@@ -10,13 +10,24 @@ import os
 import shutil
 from PIL import Image
 from database import (
-    User, get_db,
+    User, get_db,Photo,
     insert_user, fetch_user_by_email, fetch_user_by_phone, fetch_user_by_id, fetch_user_by_token, update_user, delete_user
 )
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from sqlalchemy.orm import Session
+from typing import List
 
 # FastAPI应用
 app = FastAPI()
- 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 或者指定允许的源，例如 ["http://localhost:3000"]
+    allow_credentials=True,
+    allow_methods=["*"],  # 允许所有方法，例如 GET, POST
+    allow_headers=["*"],   # 允许所有请求头
+)
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 # request模型
 class UserRegistration(BaseModel):
     email: str
@@ -69,9 +80,11 @@ class PhotoMetadata(BaseModel):
     appVersion: Optional[str] = None
 
 class PhotoUploadResponse(BaseModel):
+    photoID: List[str]  # List of photo IDs
     photoUrls: dict
     captureTimestamp: str
     message: str
+
 
 #token verification
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -280,19 +293,13 @@ async def upload_photos(
 ):
     # Permission check
     if userId != current_user_id:
-        raise HTTPException(
-            status_code=403,
-            detail="Not allowed to upload photos for other users"
-        )
-    
+        raise HTTPException(status_code=403, detail="Not allowed to upload photos for other users")
+
     # Validate timestamp format
     try:
         capture_time = datetime.fromisoformat(captureTimestamp.replace('Z', '+00:00'))
     except ValueError:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid timestamp format. Use ISO 8601 format (e.g., 2025-04-16T12:30:00Z)"
-        )
+        raise HTTPException(status_code=400, detail="Invalid timestamp format. Use ISO 8601 format (e.g., 2025-04-16T12:30:00Z)")
 
     # Validate metadata if provided
     if metadata:
@@ -300,49 +307,70 @@ async def upload_photos(
             metadata_dict = json.loads(metadata)
             PhotoMetadata(**metadata_dict)
         except (json.JSONDecodeError, ValueError):
-            raise HTTPException(
-                status_code=400,
-                detail="Invalid metadata format"
-            )
+            raise HTTPException(status_code=400, detail="Invalid metadata format")
 
     # Validate images
     photos = {"front": front, "left": left, "right": right}
     for name, photo in photos.items():
         if not validate_image(photo):
-            raise HTTPException(
-                status_code=400,
-                detail=f"Invalid {name} image. Must be JPG/PNG, minimum 1000x1000px, under 10MB"
-            )
+            raise HTTPException(status_code=400, detail=f"Invalid {name} image. Must be JPG/PNG, minimum 1000x1000px, under 10MB")
 
-    # Create upload directory
-    timestamp_str = capture_time.strftime("%Y-%m-%dT%H:%M:%SZ")
-    upload_base = os.path.join("uploads", userId, timestamp_str)
-    os.makedirs(upload_base, exist_ok=True)
-
-    # Save files and generate URLs
-    photo_urls = {}
-    expiry = (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
-
+   # 保存图像到文件系统
+    photo_paths = {}
+    upload_dir = f"uploads/{userId}/{capture_time.isoformat().replace(':', '-')}"  # 使用时间戳创建唯一目录
+#但是要注意，这样的目录名可能会有问题，因为文件系统不允许某些字符，比如冒号(:)，所以我们用'-'替换它们
+#而且注意，这个目录是本地的，最终是服务器对应的文件系统路径，所以之后需要转换为可访问路径
+    # 创建目录
+    os.makedirs(upload_dir, exist_ok=True)
+    #common_id= str(uuid.uuid4())  # 生成一个通用ID用于所有照片,ERROR!
+    photos = {"front": front, "left": left, "right": right}
+    photo_ids = []  # 用于存储所有照片的ID
     for photo_type, photo in photos.items():
-        # Generate unique filename
-        file_id = str(uuid.uuid4())[:8]
-        extension = os.path.splitext(photo.filename)[1].lower() or ".jpg"
-        filename = f"{file_id}-{photo_type}{extension}"
-        file_path = os.path.join(upload_base, filename)
+        file_path = os.path.join(upload_dir, f"{photo_type}.jpg")  # 或者使用合适的文件扩展名
+        with open(file_path, "wb") as img_file:
+            img_file.write(await photo.read())  # 保存图像数据
+
+        # 存储文件路径
+        photo_paths[photo_type] = file_path
         
-        # Save file
-        with open(file_path, "wb+") as file_object:
-            shutil.copyfileobj(photo.file, file_object)
-        
-        # Generate URL
-        relative_path = f"/uploads/{userId}/{timestamp_str}/{filename}"
-        photo_urls[photo_type] = generate_signed_url(relative_path, expiry, userId)
+        db_photo = Photo(
+            id=str(uuid.uuid4()),  # 生成唯一ID
+            user_id=userId,
+            image_type=photo_type,
+            image_data=photo_paths[photo_type],  # 存储路径而不是二进制数据
+            timestamp=capture_time.isoformat()
+        )
+        photo_ids.append(db_photo.id)  # 添加到ID列表
+        db.add(db_photo)
+
+    db.commit()
+
+    
 
     return PhotoUploadResponse(
-        photoUrls=photo_urls,
-        captureTimestamp=timestamp_str,
-        message="Photos uploaded successfully"
-    )
+    photoID=photo_ids,
+    photoUrls=photo_paths,
+    captureTimestamp=capture_time.isoformat(),  # 包含时间戳
+    message="Photos uploaded successfully"
+)
+
+# 获取照片
+def get_photo(db: Session, photo_id: str):
+    return db.query(Photo).filter(Photo.id == photo_id).first()
+@app.get("/photo/{photo_id}")
+async def read_photo(photo_id: str, db: Session = Depends(get_db)):
+    photo_record = get_photo(db, photo_id)
+    if not photo_record:
+        raise HTTPException(status_code=404, detail="Photo not found")
+
+    # 读取文件内容
+    file_path = photo_record.image_data
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="File not found")
+
+    with open(file_path, "rb") as img_file:  # 以二进制模式读取文件
+        return Response(content=img_file.read(), media_type="image/jpeg")
+    #用Response（内置类）生成响应式http
 
 @app.get("/debug", status_code=status.HTTP_200_OK)
 def debug(db: Session = Depends(get_db)):

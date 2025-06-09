@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, String, Integer, DateTime
+from sqlalchemy import create_engine, Column, String, Integer, DateTime, LargeBinary
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
@@ -6,7 +6,7 @@ from datetime import datetime
 # Database URL (replace with your PostgreSQL credentials)
 #using NeonDB as an example
 #need another database
-DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-still-brook-a1o2ku0m-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-mute-feather-a1gm813w-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 
 # SQLAlchemy setup for ORM (sync only)
 engine = create_engine(DATABASE_URL)
@@ -29,6 +29,16 @@ class User(Base):
     createdAt = Column(DateTime, default=datetime.utcnow)
     lastUpdatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     token = Column(String, nullable=True)
+
+class Photo(Base):
+    __tablename__ = 'photos_path'
+    
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String)
+    image_type = Column(String)  # 'front', 'left', 'right'
+    image_data = Column(String)  # Store image as binary
+    timestamp = Column(String)
+
 
 # Create tables
 Base.metadata.create_all(bind=engine)
