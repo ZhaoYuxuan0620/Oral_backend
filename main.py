@@ -1,10 +1,14 @@
-from fastapi import FastAPI, HTTPException, status , Depends
+from fastapi import FastAPI, HTTPException, status, Depends, File, UploadFile, Form
 from pydantic import BaseModel
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from typing import Optional
 from sqlalchemy.sql import select
 from sqlalchemy.orm import Session
+import json
+import os
+import shutil
+from PIL import Image
 from database import (
     User, get_db,
     insert_user, fetch_user_by_email, fetch_user_by_phone, fetch_user_by_id, fetch_user_by_token, update_user, delete_user
@@ -59,6 +63,16 @@ class UserInfoResponse(BaseModel):
     birthYear: Optional[int]
     message: str
 
+class PhotoMetadata(BaseModel):
+    cameraModel: Optional[str] = None
+    deviceModel: Optional[str] = None
+    appVersion: Optional[str] = None
+
+class PhotoUploadResponse(BaseModel):
+    photoUrls: dict
+    captureTimestamp: str
+    message: str
+
 #token verification
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
@@ -73,6 +87,38 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security), 
             detail="Invalid or expired token"
         )
     return user.userId
+
+def validate_image(file: UploadFile) -> bool:
+    try:
+        # Read image to verify format and dimensions
+        img = Image.open(file.file)
+        width, height = img.size
+        file.file.seek(0)  # Reset file pointer
+        
+        # Check dimensions
+        if width < 1000 or height < 1000:
+            return False
+            
+        # Check format
+        if img.format.lower() not in ['jpeg', 'png']:
+            return False
+            
+        # Check file size (10MB)
+        file.file.seek(0, 2)  # Seek to end
+        size = file.file.tell()
+        file.file.seek(0)  # Reset pointer
+        if size > 10 * 1024 * 1024:
+            return False
+            
+        return True
+    except Exception:
+        return False
+
+def generate_signed_url(base_path: str, expiry: str, user_id: str) -> str:
+    # TODO: Implement proper URL signing
+    signature = "abcd1234"  # Replace with proper signing logic
+    return f"https://api.myoral.ai{base_path}?expiry={expiry}&signature={signature}"
+
 
 @app.post("/v1/users/register",  status_code=status.HTTP_200_OK)
 def register_user(user: UserRegistration, db: Session = Depends(get_db)):
@@ -219,6 +265,83 @@ def get_user_info(
         usertype=user.usertype,
         createdAt=created_at,
         lastUpdatedAt=last_updated_at
+    )
+
+@app.post("/v1/upload/{userId}", response_model=PhotoUploadResponse)
+async def upload_photos(
+    userId: str,
+    front: UploadFile = File(...),
+    left: UploadFile = File(...),
+    right: UploadFile = File(...),
+    captureTimestamp: str = Form(...),
+    metadata: Optional[str] = Form(None),
+    current_user_id: str = Depends(verify_token),
+    db: Session = Depends(get_db)
+):
+    # Permission check
+    if userId != current_user_id:
+        raise HTTPException(
+            status_code=403,
+            detail="Not allowed to upload photos for other users"
+        )
+    
+    # Validate timestamp format
+    try:
+        capture_time = datetime.fromisoformat(captureTimestamp.replace('Z', '+00:00'))
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid timestamp format. Use ISO 8601 format (e.g., 2025-04-16T12:30:00Z)"
+        )
+
+    # Validate metadata if provided
+    if metadata:
+        try:
+            metadata_dict = json.loads(metadata)
+            PhotoMetadata(**metadata_dict)
+        except (json.JSONDecodeError, ValueError):
+            raise HTTPException(
+                status_code=400,
+                detail="Invalid metadata format"
+            )
+
+    # Validate images
+    photos = {"front": front, "left": left, "right": right}
+    for name, photo in photos.items():
+        if not validate_image(photo):
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid {name} image. Must be JPG/PNG, minimum 1000x1000px, under 10MB"
+            )
+
+    # Create upload directory
+    timestamp_str = capture_time.strftime("%Y-%m-%dT%H:%M:%SZ")
+    upload_base = os.path.join("uploads", userId, timestamp_str)
+    os.makedirs(upload_base, exist_ok=True)
+
+    # Save files and generate URLs
+    photo_urls = {}
+    expiry = (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    for photo_type, photo in photos.items():
+        # Generate unique filename
+        file_id = str(uuid.uuid4())[:8]
+        extension = os.path.splitext(photo.filename)[1].lower() or ".jpg"
+        filename = f"{file_id}-{photo_type}{extension}"
+        file_path = os.path.join(upload_base, filename)
+        
+        # Save file
+        with open(file_path, "wb+") as file_object:
+            shutil.copyfileobj(photo.file, file_object)
+        
+        # Generate URL
+        relative_path = f"/uploads/{userId}/{timestamp_str}/{filename}"
+        photo_urls[photo_type] = generate_signed_url(relative_path, expiry, userId)
+
+    return PhotoUploadResponse(
+        photoUrls=photo_urls,
+        captureTimestamp=timestamp_str,
+        message="Photos uploaded successfully"
     )
 
 @app.get("/debug", status_code=status.HTTP_200_OK)
