@@ -34,7 +34,7 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security), 
 # 获取用户信息
 router = APIRouter()
 
-@router.get("/api/users/{userId}", response_model=UserDetailResponse, status_code=200)
+@router.get("/users/{userId}", response_model=UserDetailResponse, status_code=200)
 def get_user_info(
     userId: str,
     current_user_id: str = Depends(verify_token),

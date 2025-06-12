@@ -12,16 +12,23 @@ from enum import Enum
 class Gender(str, Enum):
     MALE = "M"
     FEMALE = "F"
+    OTHER = "O"
 
 class AgeGroup(str, Enum):
-    CHILD = "6-12"  # 儿童
-    ADULT = ">13"    # 成人
-
+    Child = "6-12"  # 儿童
+    Teen = "13-19"    # 成人
+    Adult= "20-59"
+    Senior = "60+"  # 老年人
 class UserRegistration(BaseModel):
     gender: Gender
     age_group: AgeGroup
     username: str
     password: str
+    email: str 
+    phoneNumber: str
+    fullName:str
+    birthdate:str
+
     
 #响应模型
 class UserRegistrationResponse(BaseModel):
@@ -47,10 +54,14 @@ def register_user(user: UserRegistration, db: Session = Depends(get_db)):
 
     # Create user record
     user_id = str(uuid.uuid4())
-    user_data = {
-        "userId": user_id,
+    user_data ={
+        "userId":user_id,
         "username": user.username,
         "gender": user.gender,
+        "email": user.email,
+        "phoneNumber": user.phoneNumber,
+        "fullName": user.fullName,
+        "birthdate": user.birthdate, 
         "password": user.password,  # Should hash in production
         "ageGroup": user.age_group,
         "createdAt": datetime.utcnow(),

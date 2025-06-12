@@ -15,9 +15,13 @@ Base = declarative_base()
 
 # Define User model for PostgreSQL
 class User(Base):
-    __tablename__ = "0611Users"
+    __tablename__ = "0612Users"
     userId = Column(String, primary_key=True, index=True)
     username = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    phoneNumber = Column(String, nullable=False)
+    fullName = Column(String, nullable=False)
+    birthdate = Column(String, nullable=False)  # Store as ISO format string
     password = Column(String, nullable=False)  # Should be hashed in production
     gender = Column(String, nullable=True)
     ageGroup = Column(String, nullable=True)
