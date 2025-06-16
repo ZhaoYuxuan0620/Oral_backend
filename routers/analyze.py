@@ -10,7 +10,7 @@ import uuid
 from pydantic import BaseModel 
 from typing import Dict 
 from sqlalchemy.orm import Session
-from database import get_db, fetch_user_by_token 
+from database import get_db, fetch_user_by_token,fetch_user_by_id
 # ---------- 模块化设计说明 ----------
 # 1. 路由组织使用APIRouter实现模块化 
 # 2. 安全验证通过OAuth2Bearer实现JWT验证 
@@ -129,8 +129,9 @@ def analyze_oral_health(image: Image) -> Dict:
 )
 async def analyze_photos(
     user_id: str = Path(..., description="User identifier"),
+    #user id作为路径参数传入，fastapi自动识别前端请求的url，自动填充该参数
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
-    token: str = Depends(verify_token)  # JWT验证 
+    token: str = Depends(verify_token)   
 ):
     """
     牙齿健康分析端点:
@@ -140,9 +141,13 @@ async def analyze_photos(
     4. 生成牙齿标注掩码 
     5. 返回诊断结果和资源URL 
     """
-    # 1. 验证用户存在性 (伪代码)
-    if not user_exists(user_id):  # 应替换为真实用户服务调用 
-        raise HTTPException(status_code=404, detail="User not found")
+    # 1. 验证用户存在性
+    user=fetch_user_by_id(user_id,  db=Depends(get_db))
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
     # 2. 校验图像格式 
     if image.content_type  not in ["image/jpeg", "image/png"]:
         raise HTTPException(
@@ -182,9 +187,7 @@ async def analyze_photos(
             detail="Image processing error"
         )
 # ---------- 工具函数 ----------
-def user_exists(user_id: str) -> bool:
-    """验证用户ID有效性 (应连接用户数据库)"""
-    return user_id.startswith("user_")   # 简化演示 
+
 def log_error(message: str):
     """错误日志记录 (应接入日志系统)"""
     print(f"[ERROR] {datetime.now()}:  {message}")

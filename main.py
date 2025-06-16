@@ -13,9 +13,9 @@ app.add_middleware(
 )
  
 # Include routers
-app.include_router(update.router, prefix="/v1")
 app.include_router(register.router, prefix="/v1")
 app.include_router(login.router, prefix="/v1")
+app.include_router(update.router, prefix="/v1")
 app.include_router(photoUpload.router, prefix="/v1")
 app.include_router(retrieve.router, prefix="/v1")
 app.include_router(readPhoto.router, prefix="/v1")

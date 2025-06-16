@@ -67,7 +67,7 @@ def validate_image(file: UploadFile) -> bool:
         return False
 
 router = APIRouter()
-@router.post("/v1/upload/{userId}", response_model=PhotoUploadResponse)
+@router.post("/upload/{userId}", response_model=PhotoUploadResponse)
 async def upload_photos(
     userId: str,
     front: UploadFile = File(...),
