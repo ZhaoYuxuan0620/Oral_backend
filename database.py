@@ -15,7 +15,7 @@ Base = declarative_base()
 
 # Define User model for PostgreSQL
 class User(Base):
-    __tablename__ = "0612Users"
+    __tablename__ = "Users"
     userId = Column(String, primary_key=True, index=True)
     username = Column(String, nullable=False)
     email = Column(String, nullable=False)

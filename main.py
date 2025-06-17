@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import update, register, login, photoUpload,retrieve,readPhoto
+from routers import update, register, login, photoUpload,retrieve,readPhoto,analyze
 from fastapi.middleware.cors  import CORSMiddleware  # 导入中间件
 from fastapi.staticfiles import StaticFiles
 
@@ -19,4 +19,4 @@ app.include_router(update.router, prefix="/v1")
 app.include_router(photoUpload.router, prefix="/v1")
 app.include_router(retrieve.router, prefix="/v1")
 app.include_router(readPhoto.router, prefix="/v1")
-#app.include_router(analyze.router, prefix="/v1")
+app.include_router(analyze.router, prefix="/v1")
