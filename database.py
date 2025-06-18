@@ -6,7 +6,7 @@ from datetime import datetime
 # Database URL (replace with your PostgreSQL credentials)
 #using NeonDB as an example
 #need another database
-DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-mute-feather-a1gm813w-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL = "postgresql://myoral:37551000@192.168.18.239:5432/myoral_db"
 
 # SQLAlchemy setup for ORM (sync only)
 engine = create_engine(DATABASE_URL)
