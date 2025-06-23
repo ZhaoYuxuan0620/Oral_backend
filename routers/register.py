@@ -8,6 +8,7 @@ from database import (
 import uuid
 from datetime import datetime
 from enum import Enum
+import bcrypt  # 新增
 # 用户注册相关的API
 class Gender(str, Enum):
     MALE = "M"
@@ -51,7 +52,19 @@ def register_user(user: UserRegistration, db: Session = Depends(get_db)):
             status_code=409,
             detail="Name already registered"
         )
-
+    # 检查邮箱和手机号唯一性
+    if db.query(User).filter(User.email == user.email).first():
+        raise HTTPException(
+            status_code=409,
+            detail="Email already registered"
+        )
+    if db.query(User).filter(User.phoneNumber == user.phoneNumber).first():
+        raise HTTPException(
+            status_code=409,
+            detail="Phone number already registered"
+        )
+    # 密码加密
+    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     # Create user record
     user_id = str(uuid.uuid4())
     user_data ={
@@ -62,7 +75,7 @@ def register_user(user: UserRegistration, db: Session = Depends(get_db)):
         "phoneNumber": user.phoneNumber,
         "fullName": user.fullName,
         "birthdate": user.birthdate, 
-        "password": user.password,  # Should hash in production
+        "password": hashed_password,  # 存储加密后的密码
         "ageGroup": user.age_group,
         "createdAt": datetime.utcnow(),
         "lastUpdatedAt": datetime.utcnow(),
