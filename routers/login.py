@@ -6,7 +6,18 @@ from database import (
     insert_user, fetch_user_by_name, fetch_user_by_id, fetch_user_by_token, update_user, delete_user
 )
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
+import jwt
+import bcrypt
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 
 class UserLogin(BaseModel):
@@ -33,14 +44,18 @@ def login_user(login: UserLogin, db: Session = Depends(get_db)):
             status_code=401,
             detail="Unauthorized"
         )
-    # Password check
-    if user.password != login.password:
+    # Password check (使用bcrypt校验)
+    if not bcrypt.checkpw(login.password.encode('utf-8'), user.password.encode('utf-8')):
         raise HTTPException(
             status_code=401,
             detail="Unauthorized"
         )
-    # Generate token
-    token = str(uuid.uuid4())
+    # Generate JWT token
+    payload = {
+        "userId": user.userId,
+        "exp": datetime.utcnow() + timedelta(minutes=EXPIRE_MINUTES)
+    }
+    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     update_user(user.userId, {"token": token, "lastUpdatedAt": datetime.utcnow()}, db)
     return UserLoginResponse(
         userId=user.userId,
