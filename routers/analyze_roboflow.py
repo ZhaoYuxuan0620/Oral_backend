@@ -1,3 +1,6 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -6,7 +9,6 @@ import numpy as np
 import supervision as sv
 import io
 import inference
-import os
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 
