@@ -2,7 +2,14 @@ from sqlalchemy import create_engine, Column, String, Integer, DateTime, LargeBi
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
+import jwt
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 # Database URL (replace with your PostgreSQL credentials)
 #using NeonDB as an example
 #need another database
@@ -22,7 +29,7 @@ class User(Base):
     phoneNumber = Column(String, nullable=False)
     fullName = Column(String, nullable=False)
     birthdate = Column(String, nullable=False)  # Store as ISO format string
-    password = Column(String, nullable=False)  # Should be hashed in production
+    password = Column(String, nullable=False)  # Stores hashed password
     gender = Column(String, nullable=True)
     ageGroup = Column(String, nullable=True)
     createdAt = Column(DateTime, default=datetime.utcnow)
@@ -67,7 +74,17 @@ def fetch_user_by_id(user_id: str, db):
     return db.query(User).filter(User.userId == user_id).first()
 
 def fetch_user_by_token(token: str, db):
-    return db.query(User).filter(User.token == token).first()
+    """
+    解码JWT token,获取userId,再查找用户。
+    """
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id = payload.get("userId")
+        if not user_id:
+            return None
+        return db.query(User).filter(User.userId == user_id).first()
+    except Exception:
+        return None
 
 def update_user(user_id: str, update_data: dict, db):
     user = db.query(User).filter(User.userId == user_id).first()

@@ -54,11 +54,11 @@ def update_user_info(
             status_code=404,
             detail="User not found"
         )
-    # Validate gender
-    if update_data.gender and update_data.gender not in ["M", "F"]:
+    # Validate gender (允许 "M", "F", "O")
+    if update_data.gender and update_data.gender not in ["M", "F", "O"]:
         raise HTTPException(
             status_code=400,
-            detail="Invalid gender value. Accepted values: M, F"
+            detail="Invalid gender value. Accepted values: M, F, O"
         )
     # Prepare update fields
     update_fields = {k: v for k, v in update_data.dict().items() if v is not None}

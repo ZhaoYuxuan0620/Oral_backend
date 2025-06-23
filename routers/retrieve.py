@@ -54,7 +54,7 @@ def get_user_info(
     if current_user_id != userId and (not current_user or current_user.usertype != "reviewer"):
         raise HTTPException(status_code=403, detail="Not allowed to view other users' info")
     # Compose full name
-    full_name = current_user.username
+    full_name = user.fullName  # 修正为 user.fullName
     # Use ISO format for createdAt/lastUpdatedAt, fallback to now if not present
     created_at = user.createdAt.isoformat() + "Z" if user.createdAt else datetime.utcnow().isoformat() + "Z"
     last_updated_at = user.lastUpdatedAt.isoformat() + "Z" if user.lastUpdatedAt else created_at
