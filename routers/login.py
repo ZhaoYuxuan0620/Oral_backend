@@ -44,6 +44,12 @@ def login_user(login: UserLogin, db: Session = Depends(get_db)):
             status_code=401,
             detail="Unauthorized"
         )
+    # 检查邮箱是否已确认
+    if not getattr(user, "confirmed", True):
+        raise HTTPException(
+            status_code=403,
+            detail="Email not confirmed. Please check your email to activate your account."
+        )
     # Password check (使用bcrypt校验)
     if not bcrypt.checkpw(login.password.encode('utf-8'), user.password.encode('utf-8')):
         raise HTTPException(
