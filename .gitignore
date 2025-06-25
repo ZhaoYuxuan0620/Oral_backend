@@ -2,3 +2,6 @@ __pycache__/
 myenv/
 WorkingFlow/
 uploads/
+masks/
+dataset/
+
