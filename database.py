@@ -1,10 +1,13 @@
-from sqlalchemy import create_engine, Column, String, Integer, DateTime, LargeBinary
+from sqlalchemy import create_engine, Column, String, Integer, DateTime, LargeBinary, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import jwt
 import os
 from dotenv import load_dotenv
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Load environment variables from .env file
 load_dotenv()
@@ -35,6 +38,8 @@ class User(Base):
     createdAt = Column(DateTime, default=datetime.utcnow)
     lastUpdatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     token = Column(String, nullable=True)
+    confirmed = Column(Boolean, default=False)  # 新增：邮箱是否已确认
+    confirmed_at = Column(DateTime, nullable=True)  # 新增：邮箱确认时间
 
 class Photo(Base):
     __tablename__ = 'photos_path'
@@ -101,3 +106,24 @@ def delete_user(user_id: str, db):
         db.delete(user)
         db.commit()
     return user
+
+def send_email(to_email, subject, body):
+    smtp_server = os.getenv("SMTP_SERVER")
+    smtp_port = int(os.getenv("SMTP_PORT", 587))
+    smtp_user = os.getenv("SMTP_USER")
+    smtp_password = os.getenv("SMTP_PASSWORD")
+    from_email = smtp_user
+    msg = MIMEMultipart()
+    msg["From"] = from_email
+    msg["To"] = to_email
+    msg["Subject"] = subject
+    msg.attach(MIMEText(body, "html", "utf-8"))
+    print(f"[DEBUG] Try send email to {to_email} via {smtp_server}:{smtp_port} as {smtp_user}")
+    try:
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_user, smtp_password)
+            server.sendmail(from_email, to_email, msg.as_string())
+        print(f"[DEBUG] Email sent to {to_email} successfully.")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
