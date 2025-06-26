@@ -33,15 +33,15 @@ class AgeGroup(str, Enum):
     Senior = "60+"  # 老年人
     
 class UserRegistration(BaseModel):
-    gender: Gender
-    age_group: AgeGroup
-    username: str
-    password: str
-    email: str
-    phoneNumber: str
-    fullName: str
-    birthdate: str
-    register_method: str
+    gender: Gender = None
+    age_group: AgeGroup = None
+    username: str = None
+    password: str = None
+    email: str = None
+    phoneNumber: str = None
+    fullName: str = None
+    birthdate: str = None
+    register_method: str = "email"
     
 #响应模型
 class UserRegistrationResponse(BaseModel):
@@ -98,7 +98,7 @@ def register_user(user: UserRegistration, request: Request, db: Session = Depend
         "createdAt": datetime.utcnow(),
         "lastUpdatedAt": datetime.utcnow(),
         "register_method": user.register_method,
-        "confirmed": False,
+        "confirmed": True,
         "confirmed_at": None
     }
     insert_user(user_data, db)

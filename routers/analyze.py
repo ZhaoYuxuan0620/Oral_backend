@@ -1,5 +1,5 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, status, Path
-from fastapi.responses import FileResponse
+from fastapi import APIRouter, UploadFile, File, HTTPException, status, Path, Query
+from fastapi.responses import FileResponse, StreamingResponse, JSONResponse
 from ultralytics import YOLO
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -7,14 +7,17 @@ import io
 import os
 import uuid
 import torch
-
+import base64
+import glob
+from datetime import datetime
+import cv2
 router = APIRouter()
 
 # 检查CUDA是否可用，设置device
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # 加载YOLOv8模型（只加载一次），指定device
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', 'best.pt')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_26best.pt')
 yolo_model = YOLO(MODEL_PATH)
 yolo_model.to(DEVICE)
 
@@ -59,12 +62,43 @@ def mask_channel_to_label_image(mask: np.ndarray, channel: int, label_dict: dict
             draw.text((x, y), label, fill=(255, 0, 0), font=font)
     return img
 
-@router.get("/analysis/mask/{filename}")
-async def get_mask_image(filename: str):
-    file_path = os.path.join("masks", filename)
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="Image not found")
-    return FileResponse(file_path, media_type="image/png")
+@router.get("/analysis/mask/{userid}")
+async def get_mask_image(
+    userid: str,
+    time: str = Query("latest", description="时间戳文件夹名，latest为最新，all为全部")
+):
+    user_dir = os.path.join("masks", userid)
+    if not os.path.exists(user_dir):
+        raise HTTPException(status_code=404, detail="User mask folder not found")
+    # 获取所有时间戳文件夹
+    subfolders = [f for f in os.listdir(user_dir) if os.path.isdir(os.path.join(user_dir, f))]
+    if not subfolders:
+        raise HTTPException(status_code=404, detail="No mask images found for user")
+    if time == "latest":
+        # 取最新时间戳文件夹
+        latest_folder = max(subfolders, key=lambda x: x)
+        mask_path = os.path.join(user_dir, latest_folder, "mask.png")
+        if not os.path.exists(mask_path):
+            raise HTTPException(status_code=404, detail="Mask image not found")
+        return FileResponse(mask_path, media_type="image/png")
+    elif time == "all":
+        # 返回所有mask图片的base64列表
+        images = []
+        for folder in sorted(subfolders):
+            mask_path = os.path.join(user_dir, folder, "mask.png")
+            if os.path.exists(mask_path):
+                with open(mask_path, "rb") as f:
+                    img_b64 = base64.b64encode(f.read()).decode("utf-8")
+                    images.append(img_b64)
+        if not images:
+            raise HTTPException(status_code=404, detail="No mask images found for user")
+        return JSONResponse(content={"images": images})
+    else:
+        # 直接用time作为文件夹名
+        mask_path = os.path.join(user_dir, time, "mask.png")
+        if not os.path.exists(mask_path):
+            raise HTTPException(status_code=404, detail="Mask image not found")
+        return FileResponse(mask_path, media_type="image/png")
 
 @router.post(
     "/analysis",
@@ -78,6 +112,7 @@ async def get_mask_image(filename: str):
 )
 async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
+    userid: str = "0"
 ):
     # 仅校验图像格式
     # if image.content_type not in ["image/jpeg", "image/png"]:
@@ -112,24 +147,18 @@ async def analyze_photos(
         else:
             raise HTTPException(status_code=500, detail="Model did not return a mask")
         # 生成彩色可视化图
-        # 颜色字典：0为背景，1-15为牙齿类别
+        # 颜色字典：0为背景，1-9为你的类别
         color_map = [
-            (0, 0, 0),         # 0: 黑色（背景）
-            (255, 0, 0),       # 1: 红色
-            (0, 255, 0),       # 2: 绿色
-            (0, 0, 255),       # 3: 蓝色
-            (255, 255, 0),     # 4: 黄色
-            (255, 0, 255),     # 5: 品红
-            (0, 255, 255),     # 6: 青色
-            (128, 128, 128),   # 7: 灰色
-            (255, 128, 0),     # 8: 橙色
-            (128, 0, 255),     # 9: 紫色
-            (0, 128, 255),     # 10: 天蓝
-            (128, 255, 0),     # 11: 黄绿
-            (255, 0, 128),     # 12: 粉红
-            (0, 255, 128),     # 13: 青绿
-            (128, 0, 0),       # 14: 深红
-            (0, 128, 0),       # 15: 深绿
+            (0, 0, 0),           # 0: 黑色（背景）
+            (50, 183, 250),      # 1: Tooth
+            (241, 130, 231),     # 2: Caries
+            (1, 62, 77),         # 3: Gum Inflammation
+            (255, 232, 177),     # 4: Mouth
+            (99, 30, 75),        # 5: Gum
+            (109, 47, 239),      # 6: Recession
+            (114, 205, 154),     # 7: Orthodontics
+            (243, 7, 231),       # 8: Mucosa
+            (132, 78, 159),      # 9: Splint
         ]
         h, w = mask.shape
         color_mask = np.zeros((h, w, 3), dtype=np.uint8)
@@ -139,14 +168,41 @@ async def analyze_photos(
         color_mask[(mask > len(color_map) - 1)] = (255, 255, 255)
         color_mask_pil = Image.fromarray(color_mask, mode="RGB")
         os.makedirs("./masks", exist_ok=True)
-        mask_fn = f"{uuid.uuid4().hex}-colormask.png"
-        color_mask_pil.save(f"./masks/{mask_fn}")
-        return {
-            "results": {
-                "maskFileName": mask_fn
-            },
-            "message": "Colored mask generated successfully"
-        }
+ 
+        # 叠加mask到原图（alpha混合）前，先画轮廓线
+        mask_np = np.array(mask)  # (H, W)
+        contour_img = np.array(color_mask_pil).copy()
+        for label in np.unique(mask_np):
+            if label == 0:
+                continue  # 跳过背景
+            binary = (mask_np == label).astype(np.uint8) * 255
+            contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            # 你可以改成其他颜色，如红色(255,0,0)
+            cv2.drawContours(contour_img, contours, -1, (255, 255, 255), 2)
+ 
+        contour_mask_pil = Image.fromarray(contour_img)
+        alpha = 0.5  # 透明度
+        original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGB")
+        blended = Image.blend(original_img, contour_mask_pil, alpha=alpha)
+        # 判断userid是否为默认值
+        if userid == "0":
+            buf = io.BytesIO()
+            blended.save(buf, format="PNG")
+            buf.seek(0)
+            return StreamingResponse(buf, media_type="image/png")
+        else:
+            # 以时间戳为文件夹名
+            timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+            user_mask_dir = os.path.join("masks", userid, timestamp)
+            os.makedirs(user_mask_dir, exist_ok=True)
+            mask_path = os.path.join(user_mask_dir, "mask.png")
+            blended.save(mask_path)
+            return {
+                "results": {
+                    "maskFileName": f"{userid}/{timestamp}/mask.png"
+                },
+                "message": "Colored mask generated successfully"
+            }
     except Exception as e:
         raise HTTPException(
             status_code=500,

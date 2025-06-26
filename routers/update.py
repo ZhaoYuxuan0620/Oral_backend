@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException,status
+from fastapi import APIRouter, Depends, HTTPException, status, File, UploadFile, Form
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from database import (
@@ -9,6 +9,7 @@ import uuid
 from datetime import datetime
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from typing import Optional
+import os
 
 class UpdateUserInfo(BaseModel): #这是更新时输入的核心数据，封装为class
     username: Optional[str] = None
@@ -44,7 +45,13 @@ router = APIRouter()
 @router.put("/users/{userId}", status_code=status.HTTP_200_OK)
 def update_user_info(
     userId: str,
-    update_data: UpdateUserInfo,
+    username: Optional[str] = Form(None),
+    fullName: Optional[str] = Form(None),
+    gender: Optional[str] = Form(None),
+    ageGroup: Optional[str] = Form(None),
+    birthdate: Optional[str] = Form(None),
+    phoneNumber: Optional[str] = Form(""),
+    photo: UploadFile = File(None),
     current_user_id: str = Depends(verify_token),
     db: Session = Depends(get_db)
 ):
@@ -61,16 +68,34 @@ def update_user_info(
             detail="User not found"
         )
     # Validate gender (允许 "M", "F", "O")
-    if update_data.gender and update_data.gender not in ["M", "F", "O"]:
+    if gender and gender not in ["M", "F", "O"]:
         raise HTTPException(
             status_code=400,
             detail="Invalid gender value. Accepted values: M, F, O"
         )
     # Prepare update fields
-    update_fields = {k: v for k, v in update_data.dict().items() if v is not None}
+    update_fields = {}
+    if username is not None:
+        update_fields["username"] = username
+    if fullName is not None:
+        update_fields["fullName"] = fullName
+    if gender is not None:
+        update_fields["gender"] = gender
+    if ageGroup is not None:
+        update_fields["ageGroup"] = ageGroup
+    if birthdate is not None:
+        update_fields["birthdate"] = birthdate
+    if phoneNumber is not None:
+        update_fields["phoneNumber"] = phoneNumber
     if update_fields:
         update_fields["lastUpdatedAt"] = datetime.utcnow()
         update_user(userId, update_fields, db)
+    # 保存用户照片（如果有上传）
+    if photo is not None:
+        os.makedirs("users", exist_ok=True)
+        photo_path = os.path.join("users", f"{userId}.jpg")
+        with open(photo_path, "wb") as f:
+            f.write(photo.file.read())
     # Fetch updated user
     updated_user = fetch_user_by_id(userId, db)
     return UserInfoResponse(
@@ -80,4 +105,5 @@ def update_user_info(
         ageGroup=updated_user.ageGroup,
         birthdate=updated_user.birthdate,
         phoneNumber=updated_user.phoneNumber,
-        message="User information updated successfully")
+        message="User information updated successfully"
+    )

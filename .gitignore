@@ -4,6 +4,6 @@ WorkingFlow/
 uploads/
 masks/
 dataset/
-myoral_clean.zip/
-dataset.zip/
+*.zip/
+models/
 
