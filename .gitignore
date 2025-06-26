@@ -4,6 +4,6 @@ WorkingFlow/
 uploads/
 masks/
 dataset/
-*.zip/
+*.zip
 models/
 
