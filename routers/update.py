@@ -12,13 +12,19 @@ from typing import Optional
 
 class UpdateUserInfo(BaseModel): #这是更新时输入的核心数据，封装为class
     username: Optional[str] = None
+    fullName: Optional[str] = None
     gender: Optional[str] = None
     ageGroup: Optional[str] = None
+    birthdate: Optional[str] = None
+    phoneNumber: Optional[str] = ""
 
 class UserInfoResponse(BaseModel):#这是完成put请求后返回的响应数据，也封装为class
     username: Optional[str]
+    fullName: Optional[str]
     gender: Optional[str]
     ageGroup: Optional[str]
+    birthdate: Optional[str]
+    phoneNumber: Optional[str]
     message: str
 
 # 辅助函数
@@ -69,6 +75,9 @@ def update_user_info(
     updated_user = fetch_user_by_id(userId, db)
     return UserInfoResponse(
         username=updated_user.username,
+        fullName=updated_user.fullName,
         gender=updated_user.gender,
         ageGroup=updated_user.ageGroup,
+        birthdate=updated_user.birthdate,
+        phoneNumber=updated_user.phoneNumber,
         message="User information updated successfully")

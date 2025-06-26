@@ -40,6 +40,8 @@ class User(Base):
     token = Column(String, nullable=True)
     confirmed = Column(Boolean, default=False)  # 新增：邮箱是否已确认
     confirmed_at = Column(DateTime, nullable=True)  # 新增：邮箱确认时间
+    register_method = Column(String, nullable=True)  # 新增：注册方式（email/sms）
+
 
 class Photo(Base):
     __tablename__ = 'photos_path'
@@ -90,6 +92,9 @@ def fetch_user_by_token(token: str, db):
         return db.query(User).filter(User.userId == user_id).first()
     except Exception:
         return None
+
+def fetch_user_by_email(email: str, db):
+    return db.query(User).filter(User.email == email).first()
 
 def update_user(user_id: str, update_data: dict, db):
     user = db.query(User).filter(User.userId == user_id).first()

@@ -44,23 +44,23 @@ def validate_image(file: UploadFile) -> bool:
     try:
         # Read image to verify format and dimensions
         img = Image.open(file.file)
-        width, height = img.size
+        # width, height = img.size
         file.file.seek(0)  # Reset file pointer
         
         # Check dimensions
-        if width < 1000 or height < 1000:
-            return False
+        # if width < 1000 or height < 1000:
+        #     return False
             
         # Check format
         if img.format.lower() not in ['jpeg', 'png']:
             return False
             
         # Check file size (10MB)
-        file.file.seek(0, 2)  # Seek to end
-        size = file.file.tell()
-        file.file.seek(0)  # Reset pointer
-        if size > 10 * 1024 * 1024:
-            return False
+        # file.file.seek(0, 2)  # Seek to end
+        # size = file.file.tell()
+        # file.file.seek(0)  # Reset pointer
+        # if size > 10 * 1024 * 1024:
+        #     return False
             
         return True
     except Exception:
@@ -100,7 +100,7 @@ async def upload_photos(
     photos = {"front": front, "left": left, "right": right}
     for name, photo in photos.items():
         if not validate_image(photo):
-            raise HTTPException(status_code=400, detail=f"Invalid {name} image. Must be JPG/PNG, minimum 1000x1000px, under 10MB")
+            raise HTTPException(status_code=400, detail=f"Invalid {name} image. Must be JPG/PNG")  # 修改提示信息
 
    # 保存图像到文件系统
     photo_paths = {}

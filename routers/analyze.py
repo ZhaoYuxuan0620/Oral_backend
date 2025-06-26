@@ -59,15 +59,15 @@ def mask_channel_to_label_image(mask: np.ndarray, channel: int, label_dict: dict
             draw.text((x, y), label, fill=(255, 0, 0), font=font)
     return img
 
-@router.get("/analysis/{user_id}/mask/{filename}")
-async def get_mask_image(user_id: str, filename: str):
+@router.get("/analysis/mask/{filename}")
+async def get_mask_image(filename: str):
     file_path = os.path.join("masks", filename)
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="Image not found")
     return FileResponse(file_path, media_type="image/png")
 
 @router.post(
-    "/analysis/{user_id}",
+    "/analysis",
     status_code=200,
     responses={
         400: {"description": "Invalid image format"},
@@ -77,15 +77,14 @@ async def get_mask_image(user_id: str, filename: str):
     }
 )
 async def analyze_photos(
-    user_id: str = Path(..., description="User identifier"),
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
 ):
     # 仅校验图像格式
-    if image.content_type not in ["image/jpeg", "image/png"]:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid image format. Only JPEG/PNG accepted"
-        )
+    # if image.content_type not in ["image/jpeg", "image/png"]:
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Invalid image format. Only JPEG/PNG accepted"
+    #     )
     try:
         contents = await image.read()
         uploaded_img = Image.open(io.BytesIO(contents)).convert("RGB")
@@ -142,10 +141,9 @@ async def analyze_photos(
         os.makedirs("./masks", exist_ok=True)
         mask_fn = f"{uuid.uuid4().hex}-colormask.png"
         color_mask_pil.save(f"./masks/{mask_fn}")
-        base_url = "http://127.0.0.1:8000/v1/analysis"
         return {
             "results": {
-                "colorMaskImageUrl": f"{base_url}/{user_id}/mask/{mask_fn}",
+                "maskFileName": mask_fn
             },
             "message": "Colored mask generated successfully"
         }

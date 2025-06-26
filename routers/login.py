@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from database import (
     User, get_db,Photo,
-    insert_user, fetch_user_by_name, fetch_user_by_id, fetch_user_by_token, update_user, delete_user
+    insert_user, fetch_user_by_name,fetch_user_by_email, fetch_user_by_id, fetch_user_by_token, update_user, delete_user
 )
 import uuid
 from datetime import datetime, timedelta
@@ -21,8 +21,7 @@ EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 
 class UserLogin(BaseModel):
-    userId: str = ""
-    username: str = ""
+    email: str
     password: str
 class UserLoginResponse(BaseModel):
     userId: str
@@ -32,29 +31,24 @@ class UserLoginResponse(BaseModel):
 router = APIRouter()
 @router.post("/login",  status_code=status.HTTP_200_OK)
 def login_user(login: UserLogin, db: Session = Depends(get_db)):
-    user = None
-    # Try to find user by userId, email, or phoneNumber
-    if login.userId:
-        user = fetch_user_by_id(login.userId, db)
-    elif login.username:
-        user = fetch_user_by_name(login.username, db)
-    # User not found
+    # 用email查找用户
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
     if not user:
         raise HTTPException(
             status_code=401,
-            detail="Unauthorized"
+            detail="Unauthorized: User not found or email not registered"
         )
     # 检查邮箱是否已确认
-    if not getattr(user, "confirmed", True):
-        raise HTTPException(
-            status_code=403,
-            detail="Email not confirmed. Please check your email to activate your account."
-        )
+    # if not getattr(user, "confirmed", True):
+    #     raise HTTPException(
+    #         status_code=403,
+    #         detail="Email not confirmed. Please check your email to activate your account."
+    #     )
     # Password check (使用bcrypt校验)
     if not bcrypt.checkpw(login.password.encode('utf-8'), user.password.encode('utf-8')):
         raise HTTPException(
             status_code=401,
-            detail="Unauthorized"
+            detail="Unauthorized, invalid password"
         )
     # Generate JWT token
     payload = {

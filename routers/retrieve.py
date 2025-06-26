@@ -11,7 +11,11 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 class UserDetailResponse(BaseModel): # 这是获取用户信息的响应模型，无需输入数据模型
     userId: str
+    username: str
+    email: str
+    phoneNumber: str
     fullName: str
+    birthdate: str
     gender:str
     ageGroup: str  
     createdAt: str
@@ -60,7 +64,11 @@ def get_user_info(
     last_updated_at = user.lastUpdatedAt.isoformat() + "Z" if user.lastUpdatedAt else created_at
     return UserDetailResponse(
         userId=user.userId,
-        fullName=full_name,
+        username=user.username,
+        email=user.email,
+        phoneNumber=user.phoneNumber,
+        fullName=user.fullName,
+        birthdate=user.birthdate,
         gender=user.gender,
         ageGroup=user.ageGroup,
         createdAt=created_at,
