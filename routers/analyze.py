@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, status, Path, Query
+from fastapi import APIRouter, UploadFile, File, HTTPException, status, Path, Query, Form
 from fastapi.responses import FileResponse, StreamingResponse, JSONResponse
 from ultralytics import YOLO
 import numpy as np
@@ -17,7 +17,7 @@ router = APIRouter()
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # 加载YOLOv8模型（只加载一次），指定device
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_26best.pt')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_30best_aug.pt')
 yolo_model = YOLO(MODEL_PATH)
 yolo_model.to(DEVICE)
 
@@ -65,14 +65,15 @@ def mask_channel_to_label_image(mask: np.ndarray, channel: int, label_dict: dict
 @router.get("/analysis/mask/{userid}")
 async def get_mask_image(
     userid: str,
-    time: str = Query("latest", description="时间戳文件夹名，latest为最新，all为全部")
+    time: str = Query("latest", description="时间戳文件夹名，latest为最新，all为全部，none为按文件名"),
+    filename: str = Query("none", description="mask文件名，仅当time=none时使用")
 ):
     user_dir = os.path.join("masks", userid)
     if not os.path.exists(user_dir):
         raise HTTPException(status_code=404, detail="User mask folder not found")
     # 获取所有时间戳文件夹
     subfolders = [f for f in os.listdir(user_dir) if os.path.isdir(os.path.join(user_dir, f))]
-    if not subfolders:
+    if not subfolders and time != "none":
         raise HTTPException(status_code=404, detail="No mask images found for user")
     if time == "latest":
         # 取最新时间戳文件夹
@@ -82,20 +83,20 @@ async def get_mask_image(
             raise HTTPException(status_code=404, detail="Mask image not found")
         return FileResponse(mask_path, media_type="image/png")
     elif time == "all":
-        # 返回所有mask图片的base64列表
-        images = []
+        # 返回所有mask图片的文件路径
+        mask_paths = []
         for folder in sorted(subfolders):
             mask_path = os.path.join(user_dir, folder, "mask.png")
             if os.path.exists(mask_path):
-                with open(mask_path, "rb") as f:
-                    img_b64 = base64.b64encode(f.read()).decode("utf-8")
-                    images.append(img_b64)
-        if not images:
+                mask_paths.append(f"{userid}/{folder}/mask.png")
+        if not mask_paths:
             raise HTTPException(status_code=404, detail="No mask images found for user")
-        return JSONResponse(content={"images": images})
-    else:
-        # 直接用time作为文件夹名
-        mask_path = os.path.join(user_dir, time, "mask.png")
+        return JSONResponse(content={"mask_paths": mask_paths})
+    elif time == "none":
+        # 通过filename读取图片
+        if not filename:
+            raise HTTPException(status_code=400, detail="filename required when time=none")
+        mask_path = os.path.join("masks", filename)
         if not os.path.exists(mask_path):
             raise HTTPException(status_code=404, detail="Mask image not found")
         return FileResponse(mask_path, media_type="image/png")
@@ -112,8 +113,9 @@ async def get_mask_image(
 )
 async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
-    userid: str = "0"
+    userId: str = Form(..., description="User ID")
 ):
+    print(f"[DEBUG] analyze_photos received userid: {userId}")  # 添加这一行
     # 仅校验图像格式
     # if image.content_type not in ["image/jpeg", "image/png"]:
     #     raise HTTPException(
@@ -146,46 +148,115 @@ async def analyze_photos(
                 raise HTTPException(status_code=500, detail="Model did not return valid masks or class ids")
         else:
             raise HTTPException(status_code=500, detail="Model did not return a mask")
-        # 生成彩色可视化图
-        # 颜色字典：0为背景，1-9为你的类别
-        color_map = [
-            (0, 0, 0),           # 0: 黑色（背景）
-            (50, 183, 250),      # 1: Tooth
-            (241, 130, 231),     # 2: Caries
-            (1, 62, 77),         # 3: Gum Inflammation
-            (255, 232, 177),     # 4: Mouth
-            (99, 30, 75),        # 5: Gum
-            (109, 47, 239),      # 6: Recession
-            (114, 205, 154),     # 7: Orthodontics
-            (243, 7, 231),       # 8: Mucosa
-            (132, 78, 159),      # 9: Splint
+        # 类别英文标签
+        class_labels = [
+            "Background",    # 0
+            "Tooth",         # 1
+            "Caries",        # 2
+            "GumInflam",     # 3
+            "Mouth",         # 4
+            "Gum",           # 5
+            "Recession",     # 6
+            "Ortho",         # 7
+            "Mucosa",        # 8
+            "Splint",        # 9
         ]
         h, w = mask.shape
+        # 颜色渲染
+        color_map = [
+            (255, 255, 255),     # 0: Background (white)
+            (255, 128, 0),       # 1: Tooth (vivid orange)
+            (64, 0, 64),         # 2: Caries (dark purple)
+            (255, 255, 0),       # 3: GumInflam (yellow)
+            (0, 255, 255),       # 4: Mouth (cyan)
+            (0, 255, 0),         # 5: Gum (green)
+            (0, 128, 255),       # 6: Recession (blue-orange)
+            (255, 0, 0),         # 7: Ortho (red)
+            (128, 0, 255),       # 8: Mucosa (purple)
+            (0, 0, 0),           # 9: Splint (black)
+        ]
         color_mask = np.zeros((h, w, 3), dtype=np.uint8)
         for v, color in enumerate(color_map):
             color_mask[mask == v] = color
-        # 若类别ID大于color_map范围，统一为白色
         color_mask[(mask > len(color_map) - 1)] = (255, 255, 255)
-        color_mask_pil = Image.fromarray(color_mask, mode="RGB")
-        os.makedirs("./masks", exist_ok=True)
- 
-        # 叠加mask到原图（alpha混合）前，先画轮廓线
-        mask_np = np.array(mask)  # (H, W)
+        color_mask_pil = Image.fromarray(color_mask, mode="RGB").convert("RGBA")
+        # 标注英文
+        draw = ImageDraw.Draw(color_mask_pil)
+        try:
+            font = ImageFont.truetype("arial.ttf", 18)
+        except:
+            font = ImageFont.load_default()
+        mask_np = np.array(mask)
+        # 取消标注英文的功能
+        # class_labels = [
+        #     "Tooth",           # 0
+        #     "Caries",          # 1
+        #     "Gum Inflammation",# 2
+        #     "Mouth",           # 3
+        #     "Gum",             # 4
+        #     "Recession",       # 5
+        #     "Orthodontics",    # 6
+        #     "Mucosa",          # 7
+        #     "Splint",          # 8
+        # ]
+        # from scipy.spatial.distance import cdist
+        # for class_id in np.unique(mask_np):
+        #     if class_id < 0 or class_id >= len(class_labels):
+        #         continue
+        #     binary = (mask_np == class_id).astype(np.uint8)
+        #     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        #     centers = []
+        #     for cnt in contours:
+        #         M = cv2.moments(cnt)
+        #         if M["m00"] == 0:
+        #             continue
+        #         cx = int(M["m10"] / M["m00"])
+        #         cy = int(M["m01"] / M["m00"])
+        #         centers.append((cx, cy))
+        #     # 合并距离较近的中心点
+        #     merged = []
+        #     used = set()
+        #     threshold = 150  # 距离阈值，可调整
+        #     for i, (cx, cy) in enumerate(centers):
+        #         if i in used:
+        #             continue
+        #         group = [(cx, cy)]
+        #         for j in range(i + 1, len(centers)):
+        #             if j in used:
+        #                 continue
+        #             dist = np.sqrt((cx - centers[j][0]) ** 2 + (cy - centers[j][1]) ** 2)
+        #             if dist < threshold:
+        #                 group.append(centers[j])
+        #                 used.add(j)
+        #         used.add(i)
+        #         # 取平均中心
+        #         avg_cx = int(np.mean([pt[0] for pt in group]))
+        #         avg_cy = int(np.mean([pt[1] for pt in group]))
+        #         merged.append((avg_cx, avg_cy))
+        #     label = class_labels[class_id]
+        #     for (cx, cy) in merged:
+        #         draw.text((cx, cy), label, fill=(255, 0, 0, 255), font=font)
+        # 画轮廓线
         contour_img = np.array(color_mask_pil).copy()
-        for label in np.unique(mask_np):
-            if label == 0:
-                continue  # 跳过背景
-            binary = (mask_np == label).astype(np.uint8) * 255
+        for class_id in np.unique(mask_np):
+            if class_id == 0:
+                continue
+            binary = (mask_np == class_id).astype(np.uint8) * 255
             contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            # 你可以改成其他颜色，如红色(255,0,0)
-            cv2.drawContours(contour_img, contours, -1, (255, 255, 255), 2)
- 
-        contour_mask_pil = Image.fromarray(contour_img)
-        alpha = 0.5  # 透明度
-        original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGB")
-        blended = Image.blend(original_img, contour_mask_pil, alpha=alpha)
+            cv2.drawContours(contour_img, contours, -1, (255, 255, 255, 255), 2)
+        contour_mask_pil = Image.fromarray(contour_img).convert("RGBA")
+        # 叠加到原图，增加透明度
+        original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGBA")
+        # 增加透明度（更透明）
+        alpha_mask = 100  # 0-255, 80更透明
+        color_mask_pil.putalpha(alpha_mask)
+        contour_mask_pil.putalpha(alpha_mask)
+        # 先叠加颜色和文字，再叠加轮廓
+        blended = Image.alpha_composite(original_img, color_mask_pil)
+        blended = Image.alpha_composite(blended, contour_mask_pil)
+        blended = blended.convert("RGB")
         # 判断userid是否为默认值
-        if userid == "0":
+        if userId == "0":
             buf = io.BytesIO()
             blended.save(buf, format="PNG")
             buf.seek(0)
@@ -193,13 +264,13 @@ async def analyze_photos(
         else:
             # 以时间戳为文件夹名
             timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-            user_mask_dir = os.path.join("masks", userid, timestamp)
+            user_mask_dir = os.path.join("masks", userId, timestamp)
             os.makedirs(user_mask_dir, exist_ok=True)
             mask_path = os.path.join(user_mask_dir, "mask.png")
             blended.save(mask_path)
             return {
                 "results": {
-                    "maskFileName": f"{userid}/{timestamp}/mask.png"
+                    "maskFileName": f"{userId}/{timestamp}/mask.png"
                 },
                 "message": "Colored mask generated successfully"
             }

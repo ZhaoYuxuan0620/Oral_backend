@@ -11,7 +11,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from typing import Optional
 import os
 
-class UpdateUserInfo(BaseModel): #这是更新时输入的核心数据，封装为class
+class UpdateUserInfo(BaseModel): # core update input
     username: Optional[str] = None
     fullName: Optional[str] = None
     gender: Optional[str] = None
@@ -19,7 +19,7 @@ class UpdateUserInfo(BaseModel): #这是更新时输入的核心数据，封装�
     birthdate: Optional[str] = None
     phoneNumber: Optional[str] = ""
 
-class UserInfoResponse(BaseModel):#这是完成put请求后返回的响应数据，也封装为class
+class UserInfoResponse(BaseModel): # put response
     username: Optional[str]
     fullName: Optional[str]
     gender: Optional[str]
@@ -28,7 +28,7 @@ class UserInfoResponse(BaseModel):#这是完成put请求后返回的响应数据
     phoneNumber: Optional[str]
     message: str
 
-# 辅助函数
+# helper
 security = HTTPBearer()
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security), db: Session = Depends(get_db)):
     token = credentials.credentials
@@ -55,7 +55,7 @@ def update_user_info(
     current_user_id: str = Depends(verify_token),
     db: Session = Depends(get_db)
 ):
-    # Permission check
+    # check permission
     if userId != current_user_id:
         raise HTTPException(
             status_code=403,
@@ -67,13 +67,13 @@ def update_user_info(
             status_code=404,
             detail="User not found"
         )
-    # Validate gender (允许 "M", "F", "O")
+    # gender check
     if gender and gender not in ["M", "F", "O"]:
         raise HTTPException(
             status_code=400,
             detail="Invalid gender value. Accepted values: M, F, O"
         )
-    # Prepare update fields
+    # update fields
     update_fields = {}
     if username is not None:
         update_fields["username"] = username
@@ -90,13 +90,13 @@ def update_user_info(
     if update_fields:
         update_fields["lastUpdatedAt"] = datetime.utcnow()
         update_user(userId, update_fields, db)
-    # 保存用户照片（如果有上传）
+    # save photo
     if photo is not None:
         os.makedirs("users", exist_ok=True)
         photo_path = os.path.join("users", f"{userId}.jpg")
         with open(photo_path, "wb") as f:
             f.write(photo.file.read())
-    # Fetch updated user
+    # get updated user
     updated_user = fetch_user_by_id(userId, db)
     return UserInfoResponse(
         username=updated_user.username,
