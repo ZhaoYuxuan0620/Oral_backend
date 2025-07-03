@@ -113,7 +113,7 @@ async def get_mask_image(
 )
 async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
-    userId: str = Form(..., description="User ID")
+    userId: str = Form("0", description="User ID")
 ):
     print(f"[DEBUG] analyze_photos received userid: {userId}")  # 添加这一行
     # 仅校验图像格式
@@ -165,14 +165,14 @@ async def analyze_photos(
         # 颜色渲染
         color_map = [
             (255, 255, 255),     # 0: Background (white)
-            (255, 128, 0),       # 1: Tooth (vivid orange)
-            (64, 0, 64),         # 2: Caries (dark purple)
-            (255, 255, 0),       # 3: GumInflam (yellow)
-            (0, 255, 255),       # 4: Mouth (cyan)
-            (0, 255, 0),         # 5: Gum (green)
-            (0, 128, 255),       # 6: Recession (blue-orange)
-            (255, 0, 0),         # 7: Ortho (red)
-            (128, 0, 255),       # 8: Mucosa (purple)
+            (255, 0, 0),         # 1: Tooth (red)
+            (0, 255, 0),         # 2: Caries (green)
+            (0, 0, 255),         # 3: GumInflam (blue)
+            (255, 255, 255),     # 4: Mouth (white, same as background, not rendered)
+            (255, 255, 0),       # 5: Gum (yellow)
+            (255, 0, 255),       # 6: Recession (magenta)
+            (0, 255, 255),       # 7: Ortho (cyan)
+            (255, 128, 0),       # 8: Mucosa (orange)
             (0, 0, 0),           # 9: Splint (black)
         ]
         color_mask = np.zeros((h, w, 3), dtype=np.uint8)
@@ -180,62 +180,8 @@ async def analyze_photos(
             color_mask[mask == v] = color
         color_mask[(mask > len(color_map) - 1)] = (255, 255, 255)
         color_mask_pil = Image.fromarray(color_mask, mode="RGB").convert("RGBA")
-        # 标注英文
-        draw = ImageDraw.Draw(color_mask_pil)
-        try:
-            font = ImageFont.truetype("arial.ttf", 18)
-        except:
-            font = ImageFont.load_default()
         mask_np = np.array(mask)
-        # 取消标注英文的功能
-        # class_labels = [
-        #     "Tooth",           # 0
-        #     "Caries",          # 1
-        #     "Gum Inflammation",# 2
-        #     "Mouth",           # 3
-        #     "Gum",             # 4
-        #     "Recession",       # 5
-        #     "Orthodontics",    # 6
-        #     "Mucosa",          # 7
-        #     "Splint",          # 8
-        # ]
-        # from scipy.spatial.distance import cdist
-        # for class_id in np.unique(mask_np):
-        #     if class_id < 0 or class_id >= len(class_labels):
-        #         continue
-        #     binary = (mask_np == class_id).astype(np.uint8)
-        #     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        #     centers = []
-        #     for cnt in contours:
-        #         M = cv2.moments(cnt)
-        #         if M["m00"] == 0:
-        #             continue
-        #         cx = int(M["m10"] / M["m00"])
-        #         cy = int(M["m01"] / M["m00"])
-        #         centers.append((cx, cy))
-        #     # 合并距离较近的中心点
-        #     merged = []
-        #     used = set()
-        #     threshold = 150  # 距离阈值，可调整
-        #     for i, (cx, cy) in enumerate(centers):
-        #         if i in used:
-        #             continue
-        #         group = [(cx, cy)]
-        #         for j in range(i + 1, len(centers)):
-        #             if j in used:
-        #                 continue
-        #             dist = np.sqrt((cx - centers[j][0]) ** 2 + (cy - centers[j][1]) ** 2)
-        #             if dist < threshold:
-        #                 group.append(centers[j])
-        #                 used.add(j)
-        #         used.add(i)
-        #         # 取平均中心
-        #         avg_cx = int(np.mean([pt[0] for pt in group]))
-        #         avg_cy = int(np.mean([pt[1] for pt in group]))
-        #         merged.append((avg_cx, avg_cy))
-        #     label = class_labels[class_id]
-        #     for (cx, cy) in merged:
-        #         draw.text((cx, cy), label, fill=(255, 0, 0, 255), font=font)
+        
         # 画轮廓线
         contour_img = np.array(color_mask_pil).copy()
         for class_id in np.unique(mask_np):
@@ -248,7 +194,7 @@ async def analyze_photos(
         # 叠加到原图，增加透明度
         original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGBA")
         # 增加透明度（更透明）
-        alpha_mask = 100  # 0-255, 80更透明
+        alpha_mask = 25  # 0-255, 80更透明
         color_mask_pil.putalpha(alpha_mask)
         contour_mask_pil.putalpha(alpha_mask)
         # 先叠加颜色和文字，再叠加轮廓
@@ -268,14 +214,35 @@ async def analyze_photos(
             os.makedirs(user_mask_dir, exist_ok=True)
             mask_path = os.path.join(user_mask_dir, "mask.png")
             blended.save(mask_path)
+            # 保存类别ID图（二维数组，npy格式）
+            mask_id_path = os.path.join(user_mask_dir, "mask_id.npy")
+            np.save(mask_id_path, mask_np)
             return {
                 "results": {
-                    "maskFileName": f"{userId}/{timestamp}/mask.png"
+                    "maskFileName": f"{userId}/{timestamp}/mask.png",
+                    "maskIdFileName": f"{userId}/{timestamp}/mask_id.npy"
                 },
-                "message": "Colored mask generated successfully"
+                "message": "Colored mask and mask id array generated successfully"
             }
     except Exception as e:
         raise HTTPException(
             status_code=500,
             detail="Image processing error"
         )
+
+@router.get("/analysis/maskid/{userid}")
+async def get_mask_id_array(
+    userid: str
+):
+    user_dir = os.path.join("masks", userid)
+    if not os.path.exists(user_dir):
+        raise HTTPException(status_code=404, detail="User mask folder not found")
+    subfolders = [f for f in os.listdir(user_dir) if os.path.isdir(os.path.join(user_dir, f))]
+    if not subfolders:
+        raise HTTPException(status_code=404, detail="No mask id files found for user")
+    latest_folder = max(subfolders, key=lambda x: x)
+    mask_id_path = os.path.join(user_dir, latest_folder, "mask_id.npy")
+    if not os.path.exists(mask_id_path):
+        raise HTTPException(status_code=404, detail="Mask id file not found")
+    mask_id = np.load(mask_id_path)
+    return {"mask_id": mask_id.tolist()}
