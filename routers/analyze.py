@@ -15,15 +15,16 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import json
 
+
+
 router = APIRouter()
 
-# 检查CUDA是否可用，设置device
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"[DEBUG]  using device: {device}")
 # 加载YOLOv8模型（只加载一次），指定device
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_30best_aug.pt')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '7_4best.pt')
 yolo_model = YOLO(MODEL_PATH)
-yolo_model.to(DEVICE)
+yolo_model.to(device)
 
 # 通道字典（如需后续多通道mask可参考）
 # RED_DICT = {
@@ -119,7 +120,12 @@ async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
     userId: str = Form("0", description="User ID")
 ):
-    print(f"[DEBUG] analyze_photos received userid: {userId}")
+
+    # 动态选择 device
+    
+    print(f"[DEBUG] analyze_photos received userid: {userId}, using device: {device}")
+    yolo_model.to(device)
+
     # 仅校验图像格式
     # if image.content_type not in ["image/jpeg", "image/png"]:
     #     raise HTTPException(
@@ -130,7 +136,7 @@ async def analyze_photos(
         contents = await image.read()
         uploaded_img = Image.open(io.BytesIO(contents)).convert("RGB")
         # 使用YOLOv8模型推理，获取mask
-        results = yolo_model(np.array(uploaded_img), device=DEVICE)
+        results = yolo_model(np.array(uploaded_img), device=device)
         # 合并所有牙齿的mask为一张类别分割图
         mask = None
         if hasattr(results[0], "masks") and results[0].masks is not None:
