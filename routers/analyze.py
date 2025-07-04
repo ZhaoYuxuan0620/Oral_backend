@@ -15,6 +15,8 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import json
 
+
+
 router = APIRouter()
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -118,10 +120,12 @@ async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
     userId: str = Form("0", description="User ID")
 ):
+
     # 动态选择 device
     
     print(f"[DEBUG] analyze_photos received userid: {userId}, using device: {device}")
     yolo_model.to(device)
+
     # 仅校验图像格式
     # if image.content_type not in ["image/jpeg", "image/png"]:
     #     raise HTTPException(
