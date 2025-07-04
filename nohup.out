@@ -1,0 +1,7 @@
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1755284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 98] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.

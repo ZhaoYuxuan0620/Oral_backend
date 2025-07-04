@@ -11,15 +11,18 @@ import base64
 import glob
 from datetime import datetime
 import cv2
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+import json
+
 router = APIRouter()
 
-# 检查CUDA是否可用，设置device
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"[DEBUG]  using device: {device}")
 # 加载YOLOv8模型（只加载一次），指定device
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_30best_aug.pt')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '7_4best.pt')
 yolo_model = YOLO(MODEL_PATH)
-yolo_model.to(DEVICE)
+yolo_model.to(device)
 
 # 通道字典（如需后续多通道mask可参考）
 # RED_DICT = {
@@ -115,7 +118,10 @@ async def analyze_photos(
     image: UploadFile = File(..., description="Oral photo in JPEG/PNG format"),
     userId: str = Form("0", description="User ID")
 ):
-    print(f"[DEBUG] analyze_photos received userid: {userId}")  # 添加这一行
+    # 动态选择 device
+    
+    print(f"[DEBUG] analyze_photos received userid: {userId}, using device: {device}")
+    yolo_model.to(device)
     # 仅校验图像格式
     # if image.content_type not in ["image/jpeg", "image/png"]:
     #     raise HTTPException(
@@ -126,7 +132,7 @@ async def analyze_photos(
         contents = await image.read()
         uploaded_img = Image.open(io.BytesIO(contents)).convert("RGB")
         # 使用YOLOv8模型推理，获取mask
-        results = yolo_model(np.array(uploaded_img), device=DEVICE)
+        results = yolo_model(np.array(uploaded_img), device=device)
         # 合并所有牙齿的mask为一张类别分割图
         mask = None
         if hasattr(results[0], "masks") and results[0].masks is not None:
@@ -161,6 +167,36 @@ async def analyze_photos(
             "Mucosa",        # 8
             "Splint",        # 9
         ]
+        # 统计各类别像素点数量
+        class_counts = {label: int((mask == idx).sum()) for idx, label in enumerate(class_labels)}
+        # 统计各类别目标数量（去除Background）
+        class_object_counts = {label: int((class_ids == idx-1).sum()) for idx, label in enumerate(class_labels) if idx != 0}
+        # 生成PDF报告
+        def generate_pdf_report(object_counts, timestamp, user_info=None):
+            buf = io.BytesIO()
+            c = canvas.Canvas(buf, pagesize=A4)
+            width, height = A4
+            c.setFont("Helvetica-Bold", 18)
+            c.drawString(50, height - 50, "Oral Health Analysis Report")
+            c.setFont("Helvetica", 12)
+            c.drawString(50, height - 80, f"Report generated at: {timestamp}")
+            y = height - 120
+            if user_info:
+                c.drawString(50, y, "Patient Information:")
+                y -= 20
+                for k, v in user_info.items():
+                    c.drawString(70, y, f"{k}: {v}")
+                    y -= 18
+                y -= 10
+            c.drawString(50, y, "Detection Results:")
+            y -= 20
+            for k, v in object_counts.items():
+                c.drawString(70, y, f"{k}: {v} detected")
+                y -= 18
+            c.save()
+            buf.seek(0)
+            return buf
+
         h, w = mask.shape
         # 颜色渲染
         color_map = [
@@ -181,7 +217,7 @@ async def analyze_photos(
         color_mask[(mask > len(color_map) - 1)] = (255, 255, 255)
         color_mask_pil = Image.fromarray(color_mask, mode="RGB").convert("RGBA")
         mask_np = np.array(mask)
-        
+
         # 画轮廓线
         contour_img = np.array(color_mask_pil).copy()
         for class_id in np.unique(mask_np):
@@ -193,36 +229,64 @@ async def analyze_photos(
         contour_mask_pil = Image.fromarray(contour_img).convert("RGBA")
         # 叠加到原图，增加透明度
         original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGBA")
-        # 增加透明度（更透明）
         alpha_mask = 25  # 0-255, 80更透明
         color_mask_pil.putalpha(alpha_mask)
         contour_mask_pil.putalpha(alpha_mask)
-        # 先叠加颜色和文字，再叠加轮廓
         blended = Image.alpha_composite(original_img, color_mask_pil)
         blended = Image.alpha_composite(blended, contour_mask_pil)
         blended = blended.convert("RGB")
-        # 判断userid是否为默认值
+
         if userId == "0":
             buf = io.BytesIO()
             blended.save(buf, format="PNG")
             buf.seek(0)
-            return StreamingResponse(buf, media_type="image/png")
+            # 生成PDF报告（无用户信息）
+            timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+            pdf_buf = generate_pdf_report(class_object_counts, timestamp)
+            pdf_base64 = base64.b64encode(pdf_buf.read()).decode()
+            return StreamingResponse(buf, media_type="image/png", headers={
+                "X-Report-PDF-Base64": pdf_base64
+            })
         else:
             # 以时间戳为文件夹名
-            timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-            user_mask_dir = os.path.join("masks", userId, timestamp)
+            timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+            user_mask_dir = os.path.join("masks", userId, datetime.utcnow().strftime("%Y%m%d%H%M%S"))
             os.makedirs(user_mask_dir, exist_ok=True)
             mask_path = os.path.join(user_mask_dir, "mask.png")
             blended.save(mask_path)
             # 保存类别ID图（二维数组，npy格式）
             mask_id_path = os.path.join(user_mask_dir, "mask_id.npy")
             np.save(mask_id_path, mask_np)
+            # 查找用户信息（通过数据库）
+            user_info = None
+            try:
+                from database import get_db, fetch_user_by_id
+                db_gen = get_db()
+                db = next(db_gen)
+                user_obj = fetch_user_by_id(userId, db)
+                if user_obj:
+                    user_info = {
+                        "Name": user_obj.fullName,
+                        "Gender": user_obj.gender,
+                        "Birthdate": user_obj.birthdate,
+                        "Email": user_obj.email,
+                        "Phone": user_obj.phoneNumber
+                    }
+                db.close()
+            except Exception:
+                user_info = None
+            # 生成PDF报告
+            pdf_buf = generate_pdf_report(class_object_counts, timestamp, user_info)
+            pdf_path = os.path.join(user_mask_dir, "report.pdf")
+            with open(pdf_path, "wb") as f:
+                f.write(pdf_buf.read())
             return {
                 "results": {
-                    "maskFileName": f"{userId}/{timestamp}/mask.png",
-                    "maskIdFileName": f"{userId}/{timestamp}/mask_id.npy"
+                    "maskFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/mask.png",
+                    "maskIdFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/mask_id.npy",
+                    "reportFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/report.pdf"
                 },
-                "message": "Colored mask and mask id array generated successfully"
+                "message": "Colored mask, mask id array, and PDF report generated successfully"
             }
     except Exception as e:
         raise HTTPException(

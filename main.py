@@ -21,3 +21,6 @@ app.include_router(retrieve.router, prefix="/v1")
 app.include_router(readPhoto.router, prefix="/v1")
 app.include_router(analyze.router, prefix="/v1")
 app.include_router(reminder.router, prefix="/v1")
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
