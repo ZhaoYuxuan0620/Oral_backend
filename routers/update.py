@@ -18,6 +18,7 @@ class UpdateUserInfo(BaseModel): # core update input
     ageGroup: Optional[str] = None
     birthdate: Optional[str] = None
     phoneNumber: Optional[str] = ""
+    appointDate: Optional[str] = None  # 精确到小时的预约时间（如：2024-06-10 15:00）
 
 class UserInfoResponse(BaseModel): # put response
     username: Optional[str]
@@ -26,6 +27,7 @@ class UserInfoResponse(BaseModel): # put response
     ageGroup: Optional[str]
     birthdate: Optional[str]
     phoneNumber: Optional[str]
+    appointDate: Optional[str]  # 精确到小时的预约时间
     message: str
 
 # helper
@@ -51,6 +53,7 @@ def update_user_info(
     ageGroup: Optional[str] = Form(None),
     birthdate: Optional[str] = Form(None),
     phoneNumber: Optional[str] = Form(""),
+    appointDate: Optional[str] = Form(None),  # 精确到小时的预约时间
     photo: UploadFile = File(None),
     current_user_id: str = Depends(verify_token),
     db: Session = Depends(get_db)
@@ -87,6 +90,8 @@ def update_user_info(
         update_fields["birthdate"] = birthdate
     if phoneNumber is not None:
         update_fields["phoneNumber"] = phoneNumber
+    if appointDate is not None:
+        update_fields["appointDate"] = appointDate
     if update_fields:
         update_fields["lastUpdatedAt"] = datetime.utcnow()
         update_user(userId, update_fields, db)
@@ -105,5 +110,6 @@ def update_user_info(
         ageGroup=updated_user.ageGroup,
         birthdate=updated_user.birthdate,
         phoneNumber=updated_user.phoneNumber,
+        appointDate=getattr(updated_user, "appointDate", None),  # 新增
         message="User information updated successfully"
     )
