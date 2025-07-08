@@ -168,29 +168,117 @@ async def analyze_photos(
         # 统计各类别像素点数量
         class_counts = {label: int((mask == idx).sum()) for idx, label in enumerate(class_labels)}
         # 统计各类别目标数量（去除Background）
-        class_object_counts = {label: int((class_ids == idx-1).sum()) for idx, label in enumerate(class_labels) if idx != 0}
-        # 生成PDF报告
-        def generate_pdf_report(object_counts, timestamp, user_info=None):
+        # 只保留需要统计的类别
+        report_classes = [
+            "Tooth", "Caries", "GumInflam", "Recession"
+        ]
+        class_object_counts = {label: int((class_ids == idx-1).sum()) for idx, label in enumerate(class_labels) if label in report_classes}
+        # 生成PDF报告，包含mask图片和颜色说明
+        def generate_pdf_report(object_counts, timestamp, mask_img, color_map, class_labels, user_info=None):
+            from reportlab.lib.utils import ImageReader
+            from reportlab.lib import colors
             buf = io.BytesIO()
             c = canvas.Canvas(buf, pagesize=A4)
             width, height = A4
-            c.setFont("Helvetica-Bold", 18)
-            c.drawString(50, height - 50, "Oral Health Analysis Report")
+            # 标题区
+            c.setFillColor(colors.HexColor('#2E4053'))
+            c.rect(0, height-80, width, 70, fill=1, stroke=0)
+            c.setFillColor(colors.white)
+            c.setFont("Helvetica-Bold", 24)
+            c.drawString(50, height - 45, "Oral Health AI Analysis Report")
             c.setFont("Helvetica", 12)
-            c.drawString(50, height - 80, f"Report generated at: {timestamp}")
-            y = height - 120
+            c.drawString(50, height - 75, f"Report generated at: {timestamp}")
+            y = height - 110
+            c.setFillColor(colors.black)
+            # 用户信息
             if user_info:
+                c.setFont("Helvetica-Bold", 13)
                 c.drawString(50, y, "Patient Information:")
                 y -= 20
+                c.setFont("Helvetica", 11)
                 for k, v in user_info.items():
                     c.drawString(70, y, f"{k}: {v}")
-                    y -= 18
-                y -= 10
+                    y -= 16
+                y -= 6
+            # 检测结果
+            c.setFont("Helvetica-Bold", 13)
             c.drawString(50, y, "Detection Results:")
-            y -= 20
+            y -= 18
+            c.setFont("Helvetica", 11)
             for k, v in object_counts.items():
                 c.drawString(70, y, f"{k}: {v} detected")
+                y -= 16
+            y -= 8
+            # 插入mask图片
+            c.setFont("Helvetica-Bold", 13)
+            c.drawString(50, y, "Segmentation Mask:")
+            y -= 10
+            img_buf = io.BytesIO()
+            mask_img.save(img_buf, format="PNG")
+            img_buf.seek(0)
+            img_reader = ImageReader(img_buf)
+            img_width = 240
+            img_height = 240
+            c.drawImage(img_reader, 50, y - img_height, width=img_width, height=img_height, mask='auto')
+            # 颜色说明，保持和渲染一致（含透明度）
+            c.setFont("Helvetica-Bold", 12)
+            legend_y = y - 10
+            legend_x = 310
+            c.drawString(legend_x, legend_y, "Color Legend:")
+            legend_y -= 18
+            c.setFont("Helvetica", 11)
+            for idx, label in enumerate(class_labels):
+                if label in report_classes:
+                    color = color_map[idx]
+                    c.setFillColorRGB(color[0]/255, color[1]/255, color[2]/255, alpha_mask/255)
+                    c.rect(legend_x, legend_y, 18, 18, fill=1, stroke=0)
+                    c.setFillColor(colors.black)
+                    c.drawString(legend_x + 26, legend_y + 3, label)
+                    legend_y -= 22
+            y = y - img_height - 30
+            # summary
+            tooth = object_counts.get("Tooth", 0)
+            caries = object_counts.get("Caries", 0)
+            gum_inflam = object_counts.get("GumInflam", 0)
+            recession = object_counts.get("Recession", 0)
+            summary = "Your oral health appears excellent. Keep up the good work!"
+            if caries > 0:
+                summary = f"Warning: {caries} caries detected. Immediate dental attention is strongly recommended."
+            elif gum_inflam > 0:
+                summary = f"Notice: {gum_inflam} gum inflammation area(s) found. Please enhance your oral hygiene."
+            elif recession > 0:
+                summary = f"Caution: {recession} gum recession area(s) detected. Consider professional advice."
+            elif tooth == 0:
+                summary = "No teeth detected. Please check the uploaded image or retake the photo."
+            c.setFont("Helvetica-Bold", 13)
+            c.setFillColor(colors.HexColor('#1A5276'))
+            c.drawString(50, y, "Summary:")
+            y -= 20
+            c.setFont("Helvetica", 12)
+            c.setFillColor(colors.black)
+            for line in summary.split("\n"):
+                c.drawString(70, y, line)
                 y -= 18
+            y -= 8
+            # 免责声明（自动换行+更小字体）
+            disclaimer = "This report is generated by AI analysis and is for reference only. For a professional diagnosis, please consult a licensed dentist."
+            c.setFont("Helvetica-Oblique", 9)
+            c.setFillColorRGB(0.3, 0.3, 0.3)
+            max_width = width - 100
+            words = disclaimer.split()
+            line = ''
+            for word in words:
+                test_line = line + word + ' '
+                if c.stringWidth(test_line, "Helvetica-Oblique", 9) < max_width:
+                    line = test_line
+                else:
+                    c.drawString(50, y, line.strip())
+                    y -= 12
+                    line = word + ' '
+            if line:
+                c.drawString(50, y, line.strip())
+                y -= 12
+            c.setFillColor(colors.black)
             c.save()
             buf.seek(0)
             return buf
@@ -240,7 +328,7 @@ async def analyze_photos(
             buf.seek(0)
             # 生成PDF报告（无用户信息）
             timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-            pdf_buf = generate_pdf_report(class_object_counts, timestamp)
+            pdf_buf = generate_pdf_report(class_object_counts, timestamp, blended, color_map, class_labels)
             pdf_base64 = base64.b64encode(pdf_buf.read()).decode()
             return StreamingResponse(buf, media_type="image/png", headers={
                 "X-Report-PDF-Base64": pdf_base64
@@ -274,7 +362,7 @@ async def analyze_photos(
             except Exception:
                 user_info = None
             # 生成PDF报告
-            pdf_buf = generate_pdf_report(class_object_counts, timestamp, user_info)
+            pdf_buf = generate_pdf_report(class_object_counts, timestamp, blended, color_map, class_labels, user_info)
             pdf_path = os.path.join(user_mask_dir, "report.pdf")
             with open(pdf_path, "wb") as f:
                 f.write(pdf_buf.read())
