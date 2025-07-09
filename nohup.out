@@ -401,3 +401,34 @@ INFO:     202.131.74.10:39528 - "POST /v1/analysis HTTP/1.1" 200 OK
 INFO:     202.131.74.10:17688 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709093126%2Fmask.png HTTP/1.1" 200 OK
 INFO:     202.131.74.10:41057 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
 INFO:     193.34.212.110:40332 - "GET / HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:49159 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:34059 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:15075 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:29144 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:45417 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:24235 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:38463 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:4661 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:30684 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:45417 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:45417 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:63746 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [212225]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [281027]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [281027]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [281459]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

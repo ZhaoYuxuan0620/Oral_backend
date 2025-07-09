@@ -298,7 +298,7 @@ async def analyze_photos(
             # Prescription
             c.setFont("Helvetica-Bold", 13)
             c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
-            c.drawString(50, y, "Prescription")
+            c.drawString(50, y, "Recommendation")
             y -= 18
             c.setFont("Helvetica", 11)
             c.setFillColor(colors.black)
@@ -339,7 +339,7 @@ async def analyze_photos(
             legend_y = y
             c.setFont("Helvetica-Bold", 12)
             c.setFillColor(colors.HexColor(LIGHT_BLUE))
-            c.drawString(legend_x, legend_y, "Color Legend:")
+            c.drawString(legend_x, legend_y, "Legend:")
             legend_y -= 22
             c.setFont("Helvetica", 11)
             alpha_mask = 25  # 与图片渲染一致
