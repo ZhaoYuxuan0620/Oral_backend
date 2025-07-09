@@ -9,7 +9,7 @@ import uuid
 import torch
 import base64
 import glob
-from datetime import datetime
+from datetime import datetime,timedelta
 import cv2
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -177,91 +177,168 @@ async def analyze_photos(
         def generate_pdf_report(object_counts, timestamp, mask_img, color_map, class_labels, user_info=None):
             from reportlab.lib.utils import ImageReader
             from reportlab.lib import colors
+            from reportlab.lib.pagesizes import A4
+            from reportlab.pdfbase import pdfmetrics
+            from reportlab.pdfbase.ttfonts import TTFont
+            import os
+
             buf = io.BytesIO()
             c = canvas.Canvas(buf, pagesize=A4)
             width, height = A4
-            # 标题区
-            c.setFillColor(colors.HexColor('#2E4053'))
-            c.rect(0, height-80, width, 70, fill=1, stroke=0)
-            c.setFillColor(colors.white)
-            c.setFont("Helvetica-Bold", 24)
-            c.drawString(50, height - 45, "Oral Health AI Analysis Report")
-            c.setFont("Helvetica", 12)
-            c.drawString(50, height - 75, f"Report generated at: {timestamp}")
-            y = height - 110
+
+            # 顶部logo与信息
+            logo_y = height - 60
+            LIGHT_BLUE = "#42A5F5"  # 浅蓝色
+            c.setFont("Helvetica-Bold", 26)  # 标题更大
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
+            c.drawCentredString(width / 2, logo_y, "MyOral.ai")
+            c.setFont("Helvetica", 10)
+            c.setFillColor(colors.HexColor("#555555"))
+            c.drawCentredString(width / 2, logo_y - 16, "K11 Atelier, King's Road, Hong Kong")
+
+            # 分割线
+            c.setStrokeColor(colors.HexColor("#B0B0B0"))
+            c.setLineWidth(1)
+            c.line(40, logo_y - 28, width - 40, logo_y - 28)
+
+            # 主标题
+            c.setFont("Helvetica-Bold", 22)
             c.setFillColor(colors.black)
-            # 用户信息
-            if user_info:
-                c.setFont("Helvetica-Bold", 13)
-                c.drawString(50, y, "Patient Information:")
-                y -= 20
-                c.setFont("Helvetica", 11)
-                for k, v in user_info.items():
-                    c.drawString(70, y, f"{k}: {v}")
-                    y -= 16
-                y -= 6
-            # 检测结果
+            c.drawCentredString(width / 2, logo_y - 55, "Primary Report")
+
+            # 报告生成时间（中国时间），紧跟在主标题下且不加粗
+            y = logo_y - 75
+            from datetime import datetime, timedelta
+            c.setFont("Helvetica", 11)
+            c.setFillColor(colors.black)
+            try:
+                utc_time = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+            except Exception:
+                utc_time = datetime.utcnow()
+            china_time = utc_time + timedelta(hours=8)
+            c.drawCentredString(width / 2, y, f"Report Generated At: {china_time.strftime('%Y-%m-%d %H:%M:%S')}")
+            y -= 20
+
+            # Patient Info
             c.setFont("Helvetica-Bold", 13)
-            c.drawString(50, y, "Detection Results:")
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
+            c.drawString(50, y, "Patient Info")
             y -= 18
             c.setFont("Helvetica", 11)
-            for k, v in object_counts.items():
-                c.drawString(70, y, f"{k}: {v} detected")
+            c.setFillColor(colors.black)
+            if user_info:
+                if user_info.get("Name"):
+                    c.setFont("Helvetica-Bold", 11)
+                    c.drawString(60, y, "Full Name:")
+                    c.setFont("Helvetica", 11)
+                    c.drawString(140, y, str(user_info['Name']))
+                    y -= 16
+                if user_info.get("Gender"):
+                    c.setFont("Helvetica-Bold", 11)
+                    c.drawString(60, y, "Gender:")
+                    c.setFont("Helvetica", 11)
+                    c.drawString(140, y, str(user_info['Gender']))
+                    y -= 16
+                if user_info.get("Birthdate"):
+                    c.setFont("Helvetica-Bold", 11)
+                    c.drawString(60, y, "Birth Date:")
+                    c.setFont("Helvetica", 11)
+                    c.drawString(140, y, str(user_info['Birthdate']))
+                    y -= 16
+                if user_info.get("Phone"):
+                    c.setFont("Helvetica-Bold", 11)
+                    c.drawString(60, y, "Phone:")
+                    c.setFont("Helvetica", 11)
+                    c.drawString(140, y, str(user_info['Phone']))
+                    y -= 16
+                if user_info.get("Email"):
+                    c.setFont("Helvetica-Bold", 11)
+                    c.drawString(60, y, "Email:")
+                    c.setFont("Helvetica", 11)
+                    c.drawString(140, y, str(user_info['Email']))
+                    y -= 16
+                y -= 8
+            else:
+                c.drawString(60, y, "No patient info available.")
                 y -= 16
-            y -= 8
+
+            # Assessment
+            c.setFont("Helvetica-Bold", 13)
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
+            c.drawString(50, y, "Assessment")
+            y -= 18
+            c.setFont("Helvetica", 11)
+            c.setFillColor(colors.black)
+            tooth = object_counts.get("Tooth", 0)
+            caries = object_counts.get("Caries", 0)
+            gum_inflam = object_counts.get("GumInflam", 0)
+            recession = object_counts.get("Recession", 0)
+            # YOLO模型总结
+            summary_line = f"Detected: {tooth} teeth, {caries} caries, {gum_inflam} gum inflammation, {recession} gum recession."
+            c.drawString(60, y, summary_line)
+            y -= 16
+            assessment = "The patient appears in good health with no immediate concerns during the examination."
+            if caries > 0:
+                assessment = f"{caries} caries detected. Immediate dental attention is strongly recommended."
+            elif gum_inflam > 0:
+                assessment = f"{gum_inflam} gum inflammation area(s) found. Please enhance oral hygiene."
+            elif recession > 0:
+                assessment = f"{recession} gum recession area(s) detected. Consider professional advice."
+            elif tooth == 0:
+                assessment = "No teeth detected. Please check the uploaded image or retake the photo."
+            c.drawString(60, y, assessment)
+            y -= 24
+
+            # Prescription
+            c.setFont("Helvetica-Bold", 13)
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
+            c.drawString(50, y, "Prescription")
+            y -= 18
+            c.setFont("Helvetica", 11)
+            c.setFillColor(colors.black)
+            prescription = "No prescription is necessary at this time, as the patient is in good health with no identified medical concerns."
+            if caries > 0 or gum_inflam > 0 or recession > 0:
+                prescription = "Please consult a dentist for further evaluation and treatment."
+            elif tooth == 0:
+                prescription = "No prescription due to missing teeth detection."
+            c.drawString(60, y, prescription)
+            y -= 30
+
             # 插入mask图片
             c.setFont("Helvetica-Bold", 13)
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
             c.drawString(50, y, "Segmentation Mask:")
             y -= 10
             img_buf = io.BytesIO()
             mask_img.save(img_buf, format="PNG")
             img_buf.seek(0)
             img_reader = ImageReader(img_buf)
-            img_width = 240
-            img_height = 240
+            img_width = 220
+            img_height = 180
             c.drawImage(img_reader, 50, y - img_height, width=img_width, height=img_height, mask='auto')
-            # 颜色说明，保持和渲染一致（含透明度）
-            c.setFont("Helvetica-Bold", 12)
+
+            # 颜色说明（legend），透明度与渲染一致
             legend_y = y - 10
-            legend_x = 310
+            legend_x = 290
+            c.setFont("Helvetica-Bold", 12)
+            c.setFillColor(colors.HexColor(LIGHT_BLUE))  # 浅蓝色
             c.drawString(legend_x, legend_y, "Color Legend:")
-            legend_y -= 18
+            legend_y -= 22
             c.setFont("Helvetica", 11)
+            alpha_mask = 25  # 与图片渲染一致
             for idx, label in enumerate(class_labels):
-                if label in report_classes:
+                if label in ["Tooth", "Caries", "GumInflam", "Recession"]:
                     color = color_map[idx]
-                    c.setFillColorRGB(color[0]/255, color[1]/255, color[2]/255, alpha_mask/255)
-                    c.rect(legend_x, legend_y, 18, 18, fill=1, stroke=0)
+                    c.setFillColorRGB(color[0]/255, color[1]/255, color[2]/255, alpha=alpha_mask/255)
+                    c.rect(legend_x, legend_y, 16, 16, fill=1, stroke=0)
                     c.setFillColor(colors.black)
-                    c.drawString(legend_x + 26, legend_y + 3, label)
-                    legend_y -= 22
+                    c.drawString(legend_x + 22, legend_y + 2, label)
+                    legend_y -= 20
+
             y = y - img_height - 30
-            # summary
-            tooth = object_counts.get("Tooth", 0)
-            caries = object_counts.get("Caries", 0)
-            gum_inflam = object_counts.get("GumInflam", 0)
-            recession = object_counts.get("Recession", 0)
-            summary = "Your oral health appears excellent. Keep up the good work!"
-            if caries > 0:
-                summary = f"Warning: {caries} caries detected. Immediate dental attention is strongly recommended."
-            elif gum_inflam > 0:
-                summary = f"Notice: {gum_inflam} gum inflammation area(s) found. Please enhance your oral hygiene."
-            elif recession > 0:
-                summary = f"Caution: {recession} gum recession area(s) detected. Consider professional advice."
-            elif tooth == 0:
-                summary = "No teeth detected. Please check the uploaded image or retake the photo."
-            c.setFont("Helvetica-Bold", 13)
-            c.setFillColor(colors.HexColor('#1A5276'))
-            c.drawString(50, y, "Summary:")
-            y -= 20
-            c.setFont("Helvetica", 12)
-            c.setFillColor(colors.black)
-            for line in summary.split("\n"):
-                c.drawString(70, y, line)
-                y -= 18
-            y -= 8
-            # 免责声明（自动换行+更小字体）
-            disclaimer = "This report is generated by AI analysis and is for reference only. For a professional diagnosis, please consult a licensed dentist."
+
+            # 免责声明
+            disclaimer = "Disclaimer: This report is generated by MyOral.ai using AI analysis and is for reference only. For a professional diagnosis, please consult a licensed dentist."
             c.setFont("Helvetica-Oblique", 9)
             c.setFillColorRGB(0.3, 0.3, 0.3)
             max_width = width - 100
@@ -278,7 +355,11 @@ async def analyze_photos(
             if line:
                 c.drawString(50, y, line.strip())
                 y -= 12
-            c.setFillColor(colors.black)
+
+            # Footer
+            c.setFont("Helvetica", 9)
+            c.setFillColor(colors.HexColor("#888888"))
+            c.drawCentredString(width / 2, 32, "For inquiries and appointments, visit www.MyOral.ai")
             c.save()
             buf.seek(0)
             return buf
@@ -325,7 +406,6 @@ async def analyze_photos(
         if userId == "0":
             buf = io.BytesIO()
             blended.save(buf, format="PNG")
-            buf.seek(0)
             # 生成PDF报告（无用户信息）
             timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
             pdf_buf = generate_pdf_report(class_object_counts, timestamp, blended, color_map, class_labels)
@@ -366,11 +446,12 @@ async def analyze_photos(
             pdf_path = os.path.join(user_mask_dir, "report.pdf")
             with open(pdf_path, "wb") as f:
                 f.write(pdf_buf.read())
+            # 返回的文件名使用同一个timestamp
             return {
                 "results": {
-                    "maskFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/mask.png",
-                    "maskIdFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/mask_id.npy",
-                    "reportFileName": f"{userId}/{datetime.utcnow().strftime('%Y%m%d%H%M%S')}/report.pdf"
+                    "maskFileName": f"{userId}/{os.path.basename(user_mask_dir)}/mask.png",
+                    "maskIdFileName": f"{userId}/{os.path.basename(user_mask_dir)}/mask_id.npy",
+                    "reportFileName": f"{userId}/{os.path.basename(user_mask_dir)}/report.pdf"
                 },
                 "message": "Colored mask, mask id array, and PDF report generated successfully"
             }
@@ -396,3 +477,20 @@ async def get_mask_id_array(
         raise HTTPException(status_code=404, detail="Mask id file not found")
     mask_id = np.load(mask_id_path)
     return {"mask_id": mask_id.tolist()}
+
+@router.get("/analysis/report/pdf")
+async def get_pdf_report(pdf_path: str):
+    """
+    读取指定路径的PDF报告并返回，支持客户端下载。
+    :param pdf_path: PDF文件的相对或绝对路径
+    :return: FileResponse
+    """
+    pdf_path=os.path.join('masks',pdf_path)
+    if not os.path.exists(pdf_path):
+        raise HTTPException(status_code=404, detail="PDF report not found")
+    filename = os.path.basename(pdf_path)
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename=filename
+    )
