@@ -22,3 +22,4 @@ app.include_router(readPhoto.router, prefix="/v1")
 app.include_router(analyze.router, prefix="/v1")
 app.include_router(reminder.router, prefix="/v1")
 app.include_router(print.router,prefix="/v1")
+
