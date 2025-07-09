@@ -1,0 +1,403 @@
+INFO:     Will watch for changes in these directories: ['/home/myoral/Myoral.ai']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [212223] using WatchFiles
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [212225]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+INFO:     202.131.74.10:1826 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:24212 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:44717 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:20096 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:17640 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:60556 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 22.8ms
+Speed: 3.3ms preprocess, 22.8ms inference, 45.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:5889 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:16038 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090340%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:51145 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:18326 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 13 Tooths, 2 Mouths, 2 Recessions, 21.6ms
+Speed: 0.6ms preprocess, 21.6ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:7240 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3578 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090407%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:8098 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:33407 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 13 Tooths, 4 Mouths, 1 Recession, 6.7ms
+Speed: 0.5ms preprocess, 6.7ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:57500 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:48088 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090525%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:18168 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:53947 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 2 Tooths, 4 Mouths, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 1.1ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:61772 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:31787 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090554%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:48131 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:21571 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 20 Tooths, 2 Mouths, 1 Gum, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 1.0ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:39099 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43591 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090619%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23568 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:29958 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:12992 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:14689 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709090636%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:51744 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     3.137.73.221:54356 - "GET / HTTP/1.1" 404 Not Found
+INFO:     3.137.73.221:54364 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     202.131.74.10:33063 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:14481 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:64266 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:21889 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:45972 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12953 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:57838 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:7234 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:11723 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:24515 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25085 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3115 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:61102 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:51759 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709091308%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:5491 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:59233 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:65425 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23055 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:37365 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:29785 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:6662 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:63703 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:27232 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:2285 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:7989 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23430 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8531 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:26111 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:35369 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:21823 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:4465 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:40264 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:49079 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:40264 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8531 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23430 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:35369 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:26111 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:21823 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:4465 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54286 - "GET /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+[DEBUG] login received userid: 2e7c557b-27fe-48e2-b2e3-ace371fb1e48
+INFO:     202.131.74.10:19636 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:53322 - "GET /v1/users/2e7c557b-27fe-48e2-b2e3-ace371fb1e48 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43072 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:28007 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704084351/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704084351/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:52411 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082646/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082646/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:7484 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:35042 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709082621/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709082621/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:31618 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704084414/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704084414/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8755 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709082951/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709082951/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10229 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709083307/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709083307/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:14029 - "GET /v1/analysis/mask/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709083323/mask.png?time=none&filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250709083323/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:52411 - "GET /v1/analysis/analyzed_image/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png?filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:52411 - "GET /v1/analysis/analyzed_image/2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png?filename=2e7c557b-27fe-48e2-b2e3-ace371fb1e48/20250704082316/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:41137 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:20481 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:18113 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:42383 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62513 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:62905 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:50298 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64392 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:7935 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:42524 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:42776 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:21269 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:53572 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:53784 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:2384 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25457 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:22151 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19835 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:63247 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:43115 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8533 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64644 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12763 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:53750 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:32029 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:59766 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8533 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:53750 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12763 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64644 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:32029 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:43115 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:63247 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:59766 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:36880 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:48392 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 1.0ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:39528 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:17688 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709093126%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41057 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     193.34.212.110:40332 - "GET / HTTP/1.1" 404 Not Found
