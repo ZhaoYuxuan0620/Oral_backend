@@ -28,6 +28,11 @@ class UserLoginResponse(BaseModel):
     token: str
     message: str
 
+class ChangePasswordRequest(BaseModel):
+    userId: str
+    old_password: str
+    new_password: str
+
 router = APIRouter()
 @router.post("/login",  status_code=status.HTTP_200_OK)
 def login_user(login: UserLogin, db: Session = Depends(get_db)):
@@ -63,3 +68,16 @@ def login_user(login: UserLogin, db: Session = Depends(get_db)):
         token=token,
         message="Login successful"
     )
+
+@router.post("/change-password", status_code=status.HTTP_200_OK)
+def change_password(data: ChangePasswordRequest, db: Session = Depends(get_db)):
+    user = fetch_user_by_id(data.userId, db)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    # 校验旧密码
+    if not bcrypt.checkpw(data.old_password.encode('utf-8'), user.password.encode('utf-8')):
+        raise HTTPException(status_code=401, detail="Old password is incorrect")
+    # 更新新密码
+    hashed_pw = bcrypt.hashpw(data.new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    update_user(user.userId, {"password": hashed_pw, "lastUpdatedAt": datetime.utcnow()}, db)
+    return {"message": "Password changed successfully"}

@@ -432,3 +432,2455 @@ WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not w
 INFO:     Started server process [281459]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+INFO:     202.131.74.10:42956 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 22.3ms
+Speed: 3.2ms preprocess, 22.3ms inference, 50.0ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:35627 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41576 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709095347%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:15033 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:34357 - "GET /v1/analysis/report/pdf?pdf_path=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709095347%2Freport.pdf HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10423 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.4ms
+Speed: 1.3ms preprocess, 7.4ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:20500 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10882 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250709095846%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:58054 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     193.34.212.110:50872 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.82.78.254:39140 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     193.34.212.110:51830 - "GET / HTTP/1.1" 404 Not Found
+INFO:     198.235.24.162:63098 - "GET / HTTP/1.1" 404 Not Found
+INFO:     8.137.92.73:49438 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:58630 - "GET / HTTP/1.1" 404 Not Found
+INFO:     156.228.179.29:27257 - "GET /druid/index.html HTTP/1.1" 404 Not Found
+INFO:     216.218.206.69:55380 - "GET / HTTP/1.1" 404 Not Found
+INFO:     216.218.206.105:5085 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     216.218.206.113:11067 - "GET /?format=json HTTP/1.1" 404 Not Found
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use "pip install 'uvicorn[standard]'", or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     193.34.212.110:50880 - "GET / HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:34140 - "GET / HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:30000 - "GET / HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:45921 - "GET / HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:30117 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:31043 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:58204 - "GET / HTTP/1.1" 404 Not Found
+INFO:     87.236.176.182:54463 - "GET / HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:38804 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     193.34.212.110:44680 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use "pip install 'uvicorn[standard]'", or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     149.86.227.49:39342 - "GET / HTTP/1.1" 404 Not Found
+INFO:     205.210.31.166:60188 - "GET / HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:32884 - "GET / HTTP/1.1" 404 Not Found
+INFO:     149.86.227.49:46832 - "GET / HTTP/1.1" 404 Not Found
+INFO:     89.248.167.131:43652 - "GET / HTTP/1.1" 404 Not Found
+INFO:     89.248.167.131:43660 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     206.168.34.91:55580 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.91:60222 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.91:34366 - "GET /.well-known/security.txt HTTP/1.1" 404 Not Found
+INFO:     167.94.138.53:36486 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.53:44680 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.53:35458 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:51056 - "GET / HTTP/1.1" 404 Not Found
+INFO:     149.86.227.49:52478 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [281459]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [972853]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [972853]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [975419]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [975419]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [988439]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+[DEBUG]  using device: cuda
+INFO:     209.38.72.116:52700 - "GET / HTTP/1.1" 404 Not Found
+INFO:     209.38.72.116:52716 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     198.235.24.10:60794 - "GET / HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:48088 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     34.93.17.9:42810 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     47.237.10.124:55570 - "GET / HTTP/1.1" 404 Not Found
+INFO:     47.237.10.124:55572 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:39493 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:46683 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:19868 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:25567 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47491 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:53482 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47846 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:46139 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 640x288 1 Mouth, 22.9ms
+Speed: 3.0ms preprocess, 22.9ms inference, 57.7ms postprocess per image at shape (1, 3, 640, 288)
+INFO:     202.131.74.10:17543 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:27968 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710034459%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:32031 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:53136 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:52146 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:29399 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 640x288 1 Mouth, 6.3ms
+Speed: 0.7ms preprocess, 6.3ms inference, 0.8ms postprocess per image at shape (1, 3, 640, 288)
+INFO:     202.131.74.10:24580 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:12164 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710034544%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:11291 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:14989 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:26668 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:61596 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:40114 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 7 Tooths, 3 Mouths, 5 Orthodonticss, 22.7ms
+Speed: 0.6ms preprocess, 22.7ms inference, 1.0ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:21337 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 23.0ms
+Speed: 1.3ms preprocess, 23.0ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:14767 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:16780 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43548 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:4595 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:50872 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41612 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 11 Tooths, 10 Cariess, 1 Gum Inflammation, 4 Mouths, 1 Gum, 1 Orthodontics, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:33026 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:16605 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710035022%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:14745 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23304 - "GET /v1/analysis/report/pdf?pdf_path=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710035022%2Freport.pdf HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3490 - "GET /v1/analysis/report/pdf?pdf_path=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710035022%2Freport.pdf HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [988439]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1062489]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:54152 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43477 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:61785 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:45723 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:14878 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:11582 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:38035 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:34599 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] Try send email to test@gmail.com via smtp.gmail.com:587 as a1349717347@gmail.com
+[DEBUG] Email sent to test@gmail.com successfully.
+INFO:     202.131.74.10:51043 - "POST /v1/register HTTP/1.1" 200 OK
+[DEBUG] login received userid: e959917c-8f77-44c1-8251-073c9f050256
+INFO:     202.131.74.10:18837 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:2524 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:1468 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54154 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:9351 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:31697 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:21086 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:19994 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:39763 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:11495 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:30818 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:63160 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     115.231.78.4:30000 - "GET / HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:31160 - "GET / HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:31712 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     115.231.78.4:32522 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     193.34.212.110:34658 - "GET / HTTP/1.1" 404 Not Found
+INFO:     149.86.227.49:46584 - "GET / HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:51855 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 401 Unauthorized
+INFO:     202.131.74.10:5283 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 2 Cariess, 1 Mouth, 2 Orthodonticss, 22.1ms
+Speed: 2.8ms preprocess, 22.1ms inference, 47.0ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:3095 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:6681 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710042858%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:33772 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:28818 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35456 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:2075 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 2 Tooths, 3 Cariess, 3 Mouths, 1 Orthodontics, 1 Mucosa, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:19225 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41673 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710042951%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:6130 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     124.217.188.226:44922 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 4 Tooths, 1 Caries, 1 Mouth, 3 Orthodonticss, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     124.217.188.226:44924 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     124.217.188.226:44928 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710043256%2Fmask.png HTTP/1.1" 200 OK
+INFO:     124.217.188.226:44930 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     202.131.74.10:48071 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:39608 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:34072 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62255 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 401 Unauthorized
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:40330 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47397 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:24462 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35239 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:19120 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:52272 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:50704 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:49766 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:11475 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     149.86.227.49:51770 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     202.131.74.10:49161 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 384x640 7 Tooths, 3 Mouths, 1 Gum, 2 Orthodonticss, 6.6ms
+Speed: 0.6ms preprocess, 6.6ms inference, 1.0ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:17805 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:54091 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710054137%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62193 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43350 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: SSL connection has been closed unexpectedly
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 35, in login_user
+    user = fetch_user_by_email(login.email, db)  # 假设fetch_user_by_name支持email查找
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/database.py", line 98, in fetch_user_by_email
+    return db.query(User).filter(User.email == email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) SSL connection has been closed unexpectedly
+
+[SQL: SELECT "Users"."userId" AS "Users_userId", "Users".username AS "Users_username", "Users".email AS "Users_email", "Users"."phoneNumber" AS "Users_phoneNumber", "Users"."fullName" AS "Users_fullName", "Users".birthdate AS "Users_birthdate", "Users".password AS "Users_password", "Users".gender AS "Users_gender", "Users"."ageGroup" AS "Users_ageGroup", "Users"."appointDate" AS "Users_appointDate", "Users"."createdAt" AS "Users_createdAt", "Users"."lastUpdatedAt" AS "Users_lastUpdatedAt", "Users".token AS "Users_token", "Users".confirmed AS "Users_confirmed", "Users".confirmed_at AS "Users_confirmed_at", "Users".register_method AS "Users_register_method" 
+FROM "Users" 
+WHERE "Users".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'aaa@aaa.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG] login received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb
+INFO:     202.131.74.10:60451 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:58585 - "GET /v1/users/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:36132 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 22.9ms
+Speed: 1.1ms preprocess, 22.9ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:35290 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:38796 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710054746%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:8383 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:1884 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:20303 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:15910 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:36618 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:22656 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:14347 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64627 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12001 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:37431 - "HEAD /v1/analysis/analyzed_image/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709091308/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709091308/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:22656 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710035022/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710035022/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64627 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709093126/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709093126/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:20303 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710042858/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710042858/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:15910 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710034544/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710034544/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12001 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710034459/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710034459/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:36618 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095347/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095347/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:14347 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095846/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095846/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710043256/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710043256/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25584 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710042951/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710042951/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710054137/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710054137/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64627 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710054746/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250710054746/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095846/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095846/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12001 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090619/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64627 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709093126/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709093126/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:10395 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095347/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709095347/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:36618 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709091308/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709091308/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25584 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090407/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:15910 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090554/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:22656 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090525/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:14347 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090636/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:20303 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709090340/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:30740 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709075854/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:12261 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png?time=none&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb/20250709073530/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:43973 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:30282 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:51978 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62955 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710054933%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:33043 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+INFO:     202.131.74.10:52508 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:38892 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:46445 - "GET /v1/analysis/mask/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb?time=latest&filename=4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb%2F20250710055059%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:25280 - "GET /v1/analysis/maskid/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 200 OK
+[DEBUG] login received userid: e959917c-8f77-44c1-8251-073c9f050256
+INFO:     202.131.74.10:41997 - "POST /v1/login HTTP/1.1" 401 Unauthorized
+[DEBUG] login received userid: e959917c-8f77-44c1-8251-073c9f050256
+INFO:     202.131.74.10:51166 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:7858 - "GET /v1/users/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:46122 - "POST /v1/upload/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: e959917c-8f77-44c1-8251-073c9f050256, using device: cuda
+
+0: 384x640 14 Tooths, 3 Mouths, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:17560 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:25042 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=latest&filename=e959917c-8f77-44c1-8251-073c9f050256%2F20250710055238%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:49326 - "GET /v1/analysis/maskid/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: e959917c-8f77-44c1-8251-073c9f050256, using device: cuda
+
+0: 384x640 14 Tooths, 3 Mouths, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:58648 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:40468 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=latest&filename=e959917c-8f77-44c1-8251-073c9f050256%2F20250710055341%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:53712 - "GET /v1/analysis/maskid/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10183 - "POST /v1/upload/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: e959917c-8f77-44c1-8251-073c9f050256, using device: cuda
+
+0: 384x640 8 Tooths, 1 Mouth, 3 Recessions, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:7689 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:5690 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=latest&filename=e959917c-8f77-44c1-8251-073c9f050256%2F20250710055427%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62979 - "GET /v1/analysis/maskid/e959917c-8f77-44c1-8251-073c9f050256 HTTP/1.1" 200 OK
+INFO:     193.34.212.110:56978 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  WatchFiles detected changes in 'database.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1062489]
+Process SpawnProcess-8:
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InsufficientPrivilege: permission denied for schema public
+LINE 2: CREATE TABLE "Users" (
+                     ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/myoral/Myoral.ai/main.py", line 2, in <module>
+    from routers import update, print,register, login, photoUpload, retrieve, readPhoto, analyze, reminder
+  File "/home/myoral/Myoral.ai/routers/update.py", line 4, in <module>
+    from database import (
+  File "/home/myoral/Myoral.ai/database.py", line 59, in <module>
+    Base.metadata.create_all(bind=engine)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5813, in create_all
+    bind._run_ddl_visitor(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3239, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2443, in _run_ddl_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 922, in visit_metadata
+    self.traverse_single(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 960, in visit_table
+    )._invoke_with(self.connection)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 315, in _invoke_with
+    return bind.execute(self)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
+    return connection._execute_ddl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1524, in _execute_ddl
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InsufficientPrivilege) permission denied for schema public
+LINE 2: CREATE TABLE "Users" (
+                     ^
+
+[SQL: 
+CREATE TABLE "Users" (
+	"userId" VARCHAR NOT NULL, 
+	username VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	"phoneNumber" VARCHAR NOT NULL, 
+	"fullName" VARCHAR NOT NULL, 
+	birthdate VARCHAR NOT NULL, 
+	password VARCHAR NOT NULL, 
+	gender VARCHAR, 
+	"ageGroup" VARCHAR, 
+	"appointDate" VARCHAR, 
+	"createdAt" TIMESTAMP WITHOUT TIME ZONE, 
+	"lastUpdatedAt" TIMESTAMP WITHOUT TIME ZONE, 
+	token VARCHAR, 
+	confirmed BOOLEAN, 
+	confirmed_at TIMESTAMP WITHOUT TIME ZONE, 
+	register_method VARCHAR, 
+	PRIMARY KEY ("userId")
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+Process SpawnProcess-9:
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InsufficientPrivilege: permission denied for schema public
+LINE 2: CREATE TABLE "Users" (
+                     ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/myoral/Myoral.ai/main.py", line 2, in <module>
+    from routers import update, print,register, login, photoUpload, retrieve, readPhoto, analyze, reminder
+  File "/home/myoral/Myoral.ai/routers/update.py", line 4, in <module>
+    from database import (
+  File "/home/myoral/Myoral.ai/database.py", line 59, in <module>
+    Base.metadata.create_all(bind=engine)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5813, in create_all
+    bind._run_ddl_visitor(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3239, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2443, in _run_ddl_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 922, in visit_metadata
+    self.traverse_single(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 960, in visit_table
+    )._invoke_with(self.connection)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 315, in _invoke_with
+    return bind.execute(self)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
+    return connection._execute_ddl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1524, in _execute_ddl
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InsufficientPrivilege) permission denied for schema public
+LINE 2: CREATE TABLE "Users" (
+                     ^
+
+[SQL: 
+CREATE TABLE "Users" (
+	"userId" VARCHAR NOT NULL, 
+	username VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	"phoneNumber" VARCHAR NOT NULL, 
+	"fullName" VARCHAR NOT NULL, 
+	birthdate VARCHAR NOT NULL, 
+	password VARCHAR NOT NULL, 
+	gender VARCHAR, 
+	"ageGroup" VARCHAR, 
+	"appointDate" VARCHAR, 
+	"createdAt" TIMESTAMP WITHOUT TIME ZONE, 
+	"lastUpdatedAt" TIMESTAMP WITHOUT TIME ZONE, 
+	token VARCHAR, 
+	confirmed BOOLEAN, 
+	confirmed_at TIMESTAMP WITHOUT TIME ZONE, 
+	register_method VARCHAR, 
+	PRIMARY KEY ("userId")
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1164784]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+INFO:     202.131.74.10:3753 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 401 Unauthorized
+INFO:     202.131.74.10:28577 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:42300 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055427/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055427/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25383 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055238/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055238/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23528 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25934 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:36119 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23528 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055238/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055238/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25383 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:42300 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055427/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055427/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:16413 - "HEAD /v1/analysis/analyzed_image/e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png?filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23528 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png?time=none&filename=e959917c-8f77-44c1-8251-073c9f050256/20250710055341/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:7023 - "GET /v1/analysis/mask/e959917c-8f77-44c1-8251-073c9f050256?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:17393 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:51792 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:48330 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:1207 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:53022 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:39376 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:5020 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:40940 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+INFO:     202.131.74.10:6007 - "POST /v1/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/routers/login.py", line 36, in login_user
+    print(f"[DEBUG] login received userid: {user.userId}")
+                                           ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'userId'
+[DEBUG] Try send email to aaa@aaa.com via smtp.gmail.com:587 as a1349717347@gmail.com
+[DEBUG] Email sent to aaa@aaa.com successfully.
+INFO:     202.131.74.10:65057 - "POST /v1/register HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:45946 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3107 - "PUT /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:14821 - "POST /v1/upload/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 422 Unprocessable Entity
+INFO:     202.131.74.10:2367 - "POST /v1/upload/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 422 Unprocessable Entity
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 22.5ms
+Speed: 3.4ms preprocess, 22.5ms inference, 48.5ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:26887 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:46346 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710061601%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:20320 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.4ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:19044 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:1550 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710061751%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:13511 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.4ms preprocess, 7.3ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:48397 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:31627 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710061806%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23988 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 384x640 16 Tooths, 3 Mouths, 21.4ms
+Speed: 0.7ms preprocess, 21.4ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:55331 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:58149 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710062116%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:65214 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 384x640 15 Tooths, 3 Mouths, 1 Mucosa, 6.5ms
+Speed: 0.6ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:43537 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:13461 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710062128%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:55408 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 17 Tooths, 1 Gum Inflammation, 1 Mouth, 2 Gums, 22.5ms
+Speed: 0.8ms preprocess, 22.5ms inference, 0.9ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:31097 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35294 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710062733%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:45555 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:47483 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:39294 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:15099 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 8 Tooths, 1 Mouth, 1 Gum, 7.5ms
+Speed: 1.2ms preprocess, 7.5ms inference, 0.9ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:37454 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:44701 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710063112%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:28149 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 14 Tooths, 1 Mouth, 7.5ms
+Speed: 0.7ms preprocess, 7.5ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:62175 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35437 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710063136%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:57164 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 15 Tooths, 1 Mouth, 1 Gum, 7.5ms
+Speed: 0.8ms preprocess, 7.5ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:58481 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:27295 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710063149%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:59505 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     124.217.189.7:45522 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     124.217.189.7:45524 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/register.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1164784]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1189937]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/register.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1189937]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1190123]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+INFO:     202.131.74.10:22687 - "POST /v1/register HTTP/1.1" 200 OK
+[DEBUG] login received userid: 081063ce-1505-475e-9e93-5e559698e36c
+INFO:     202.131.74.10:58458 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:1666 - "PUT /v1/users/081063ce-1505-475e-9e93-5e559698e36c HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 23.9ms
+Speed: 3.0ms preprocess, 23.9ms inference, 48.4ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:21786 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.3ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:45143 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.4ms
+Speed: 1.1ms preprocess, 7.4ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:19162 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:50577 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:22689 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:37157 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:65489 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710070232%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:64966 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:30704 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=all HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23507 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061751/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061751/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:17644 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061806/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061806/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:43748 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061601/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710061601/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:20080 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710063136/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710063136/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:18625 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062116/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062116/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:50134 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710063112/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710063112/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:34254 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062128/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062128/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:25110 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062733/mask.png?time=none&filename=c8084b22-8927-4b1f-ba2e-b430796228c4/20250710062733/mask.png HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:11031 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=all HTTP/1.1" 200 OK
+INFO:     157.245.10.165:47464 - "GET / HTTP/1.1" 404 Not Found
+INFO:     157.245.10.165:47468 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:50675 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:29677 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.4ms
+Speed: 1.2ms preprocess, 7.4ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:11571 - "POST /v1/analysis HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/login.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1190123]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1215087]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/login.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1215087]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1215383]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 23.4ms
+Speed: 3.1ms preprocess, 23.4ms inference, 49.0ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:57155 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.3ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:3941 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:30948 - "POST /v1/v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:30639 - "POST /v1/v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:30592 - "POST /v1/v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:30166 - "POST /v1/v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     149.86.227.49:52926 - "GET / HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:23605 - "POST /v1/v1/analyzsis/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:9479 - "POST /v1/v1/analyzsis/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:54276 - "POST /v1/v1/analysis/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:5712 - "POST /v1/v1/analysis HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:58779 - "POST /v1/v1/analysis HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:64093 - "POST /v1/v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:6827 - "POST /v1/v1/analyze HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.5ms
+Speed: 1.1ms preprocess, 7.5ms inference, 1.1ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:26126 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:61703 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:58952 - "POST /v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:49542 - "POST /v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:8849 - "POST /v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:5313 - "POST /v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:22901 - "POST /v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:27804 - "POST /v1/analyze HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:41499 - "POST /v1/upload/4c8ca3fe-0a8d-46a6-9457-d9aa3b50ebfb HTTP/1.1" 401 Unauthorized
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:26250 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:49167 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:4382 - "POST /v1/upload/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 384x640 9 Tooths, 2 Cariess, 3 Mouths, 2 Gums, 4 Orthodonticss, 1 Mucosa, 22.4ms
+Speed: 0.6ms preprocess, 22.4ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:35856 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43784 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710072028%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3399 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:20454 - "GET /v1/analysis/report/pdf?pdf_path=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710072028%2Freport.pdf HTTP/1.1" 200 OK
+INFO:     202.131.74.10:48946 - "POST /v1/analyze/0 HTTP/1.1" 404 Not Found
+INFO:     202.131.74.10:2724 - "POST /v1/analyze/0 HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:5967 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:35745 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 8.1ms
+Speed: 1.2ms preprocess, 8.1ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:41994 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:56088 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:54973 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     65.49.20.69:39334 - "GET / HTTP/1.1" 404 Not Found
+INFO:     65.49.20.105:24055 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     65.49.20.117:27513 - "GET /?format=json HTTP/1.1" 404 Not Found
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use "pip install 'uvicorn[standard]'", or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     202.131.74.10:34044 - "POST /v1/analysis/0 HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.2ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:57143 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.4ms
+Speed: 1.1ms preprocess, 7.4ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:61162 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:38467 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:14605 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.0ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:24011 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.6ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:22889 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:36938 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:53905 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:35051 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.5ms
+Speed: 1.1ms preprocess, 7.5ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:63382 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:3495 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 1.0ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:57539 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     193.34.212.110:48728 - "GET / HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:26916 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.5ms
+Speed: 1.1ms preprocess, 7.5ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:54096 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:40711 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.2ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:48650 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:47754 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:37641 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:61543 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:12464 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:9882 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:7296 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:40645 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:47415 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.1ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:65293 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:31674 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:27870 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.3ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:51152 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:24359 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710075620%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:14071 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.2ms preprocess, 7.3ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:43749 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.0ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:33222 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.2ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:10560 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:3369 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:25399 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 1.0ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:64031 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.4ms preprocess, 7.2ms inference, 0.8ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:37843 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.3ms
+Speed: 1.1ms preprocess, 7.3ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:52713 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 21 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 7.2ms
+Speed: 1.2ms preprocess, 7.2ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:63578 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 6.6ms
+Speed: 0.7ms preprocess, 6.6ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:50870 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 6.5ms
+Speed: 0.7ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:61838 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 6.5ms
+Speed: 1.2ms preprocess, 6.5ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:61561 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 6.4ms
+Speed: 0.6ms preprocess, 6.4ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:21744 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 6.5ms
+Speed: 0.7ms preprocess, 6.5ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:63105 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10680 - "POST /v1/register HTTP/1.1" 200 OK
+[DEBUG] login received userid: 2129737e-3128-467b-b9a8-744b1731909f
+INFO:     202.131.74.10:48070 - "POST /v1/login HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 17 Tooths, 1 Mouth, 22.8ms
+Speed: 0.8ms preprocess, 22.8ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:38893 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3492 - "PUT /v1/users/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:58794 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:45621 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 16 Tooths, 2 Mouths, 2 Gums, 7.6ms
+Speed: 0.8ms preprocess, 7.6ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:26752 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:63462 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710084218%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23308 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1215383]
+Process SpawnProcess-15:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/myoral/Myoral.ai/oralenv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/myoral/Myoral.ai/main.py", line 2, in <module>
+    from routers import update, print,register, login, photoUpload, retrieve, readPhoto, analyze, reminder
+  File "/home/myoral/Myoral.ai/routers/analyze.py", line 408
+    if class_id == 0 || class_id == 4:
+                      ^
+SyntaxError: invalid syntax
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1303738]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 18 Tooths, 1 Mouth, 1 Gum, 22.1ms
+Speed: 3.0ms preprocess, 22.1ms inference, 48.4ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:12733 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:32482 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710084827%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:29675 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] login received userid: 2129737e-3128-467b-b9a8-744b1731909f
+INFO:     202.131.74.10:3514 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:3945 - "GET /v1/users/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 1 Mouth, 7.7ms
+Speed: 1.2ms preprocess, 7.7ms inference, 1.0ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:38972 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41031 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085037%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:36722 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+INFO:     149.86.227.49:44594 - "GET / HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 22.7ms
+Speed: 0.6ms preprocess, 22.7ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:13831 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:46440 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085252%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47798 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 26 Tooths, 2 Mouths, 1 Recession, 7.5ms
+Speed: 0.7ms preprocess, 7.5ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:61095 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:24281 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085311%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:21754 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1303738]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1308655]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 16 Tooths, 1 Mouth, 2 Gums, 22.8ms
+Speed: 3.1ms preprocess, 22.8ms inference, 51.2ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:38485 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:61006 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085501%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:53578 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1308655]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1309939]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 16 Tooths, 1 Mouth, 23.4ms
+Speed: 3.5ms preprocess, 23.4ms inference, 54.9ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:27841 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:2299 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085642%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47634 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1309939]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1312331]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1312331]
+[DEBUG]  using device: cuda
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1312558]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 7 Tooths, 2 Mouths, 22.0ms
+Speed: 3.1ms preprocess, 22.0ms inference, 51.4ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:28227 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23225 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085908%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:62449 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 4 Tooths, 2 Mouths, 7.5ms
+Speed: 0.7ms preprocess, 7.5ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:47849 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:24832 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710085933%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:6530 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 23 Tooths, 1 Mouth, 2 Gums, 1 Mucosa, 7.6ms
+Speed: 0.8ms preprocess, 7.6ms inference, 0.9ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:54810 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:42892 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710090019%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:29674 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1312558]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1315491]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 20 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 22.2ms
+Speed: 3.2ms preprocess, 22.2ms inference, 53.3ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:6033 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:11818 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710090304%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10883 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 448x640 20 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 4.0ms
+Speed: 1.3ms preprocess, 4.0ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:57939 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:53941 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710090315%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:26858 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 18 Tooths, 1 Mouth, 1 Gum, 21.0ms
+Speed: 0.7ms preprocess, 21.0ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:18182 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:47595 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710090316%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:33398 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 22 Tooths, 1 Caries, 1 Mouth, 2 Gums, 1 Mucosa, 4.1ms
+Speed: 1.2ms preprocess, 4.1ms inference, 1.1ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:65420 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:5024 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710090347%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:2778 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 384x640 25 Tooths, 1 Mouth, 2 Gums, 22.5ms
+Speed: 0.6ms preprocess, 22.5ms inference, 0.9ms postprocess per image at shape (1, 3, 384, 640)
+INFO:     202.131.74.10:22177 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:4620 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710090452%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:32418 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1315491]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1317584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] analyze_photos received userid: 2129737e-3128-467b-b9a8-744b1731909f, using device: cuda
+
+0: 512x640 15 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 21.5ms
+Speed: 3.1ms preprocess, 21.5ms inference, 48.0ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:40826 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:41285 - "GET /v1/analysis/mask/2129737e-3128-467b-b9a8-744b1731909f?time=latest&filename=2129737e-3128-467b-b9a8-744b1731909f%2F20250710090604%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:28358 - "GET /v1/analysis/maskid/2129737e-3128-467b-b9a8-744b1731909f HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1317584]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1318455]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[DEBUG]  using device: cuda
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:2967 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:19843 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     193.34.212.110:37454 - "GET / HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 15 Tooths, 2 Mouths, 2 Gums, 22.3ms
+Speed: 3.1ms preprocess, 22.3ms inference, 49.4ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:23145 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 15 Tooths, 2 Mouths, 2 Gums, 4.1ms
+Speed: 0.7ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:44167 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 15 Tooths, 2 Mouths, 2 Gums, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:54269 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:38325 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:37700 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:60062 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:60149 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 7 Tooths, 2 Mouths, 2 Gums, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 1.0ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:20628 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35297 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710093146%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:27848 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 16 Tooths, 1 Mouth, 2 Gums, 4.2ms
+Speed: 0.7ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:58093 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:43160 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710093235%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:50658 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:35823 - "GET /v1/analysis/report/pdf?pdf_path=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710093235%2Freport.pdf HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 8 Tooths, 4 Mouths, 4 Gums, 4.2ms
+Speed: 1.3ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:28368 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 8 Tooths, 4 Mouths, 4 Gums, 4.1ms
+Speed: 0.7ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:19870 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 8 Tooths, 4 Mouths, 4 Gums, 4.1ms
+Speed: 0.7ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:2011 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 18 Tooths, 3 Cariess, 1 Mouth, 2 Gums, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 1.0ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:18443 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     149.86.227.49:34264 - "GET / HTTP/1.1" 404 Not Found
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 1.2ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:13993 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.1ms
+Speed: 0.7ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:47920 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.2ms
+Speed: 0.7ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:4556 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.2ms
+Speed: 0.7ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:13999 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.1ms
+Speed: 0.7ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:49114 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 20 Tooths, 2 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.2ms
+Speed: 0.7ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:21016 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 15 Tooths, 4 Cariess, 1 Mouth, 3 Gums, 2 Orthodonticss, 4.2ms
+Speed: 0.9ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:33085 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 15 Tooths, 4 Cariess, 1 Mouth, 3 Gums, 2 Orthodonticss, 4.1ms
+Speed: 0.8ms preprocess, 4.1ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:61298 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 20 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 21.8ms
+Speed: 1.1ms preprocess, 21.8ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:60071 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 448x640 20 Tooths, 1 Mouth, 2 Gums, 1 Recession, 2 Mucosas, 4.0ms
+Speed: 1.1ms preprocess, 4.0ms inference, 0.9ms postprocess per image at shape (1, 3, 448, 640)
+INFO:     202.131.74.10:16574 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 25 Tooths, 1 Mouth, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 0.9ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:23401 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: 0, using device: cuda
+
+0: 512x640 18 Tooths, 1 Mouth, 1 Gum, 2 Orthodonticss, 4.2ms
+Speed: 0.7ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:59506 - "POST /v1/analysis HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:44112 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:56632 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 17 Tooths, 3 Cariess, 1 Mouth, 2 Gums, 3 Orthodonticss, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:25880 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:8292 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710094050%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:57038 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:64302 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:19494 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] login received userid: c8084b22-8927-4b1f-ba2e-b430796228c4
+INFO:     202.131.74.10:41587 - "POST /v1/login HTTP/1.1" 200 OK
+INFO:     202.131.74.10:33483 - "GET /v1/users/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 18 Tooths, 2 Cariess, 1 Mouth, 3 Gums, 2 Orthodonticss, 4.3ms
+Speed: 0.8ms preprocess, 4.3ms inference, 0.8ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:13916 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:23521 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710094354%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:12094 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:36318 - "GET /v1/analysis/report/pdf?pdf_path=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710094354%2Freport.pdf HTTP/1.1" 200 OK
+[DEBUG] analyze_photos received userid: c8084b22-8927-4b1f-ba2e-b430796228c4, using device: cuda
+
+0: 512x640 27 Tooths, 3 Cariess, 1 Mouth, 2 Gums, 4.2ms
+Speed: 0.8ms preprocess, 4.2ms inference, 1.1ms postprocess per image at shape (1, 3, 512, 640)
+INFO:     202.131.74.10:53601 - "POST /v1/analysis HTTP/1.1" 200 OK
+INFO:     202.131.74.10:49659 - "GET /v1/analysis/mask/c8084b22-8927-4b1f-ba2e-b430796228c4?time=latest&filename=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710094540%2Fmask.png HTTP/1.1" 200 OK
+INFO:     202.131.74.10:10465 - "GET /v1/analysis/maskid/c8084b22-8927-4b1f-ba2e-b430796228c4 HTTP/1.1" 200 OK
+INFO:     202.131.74.10:37911 - "GET /v1/analysis/report/pdf?pdf_path=c8084b22-8927-4b1f-ba2e-b430796228c4%2F20250710094540%2Freport.pdf HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/analyze.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1318455]
+WARNING ⚠️ user config directory '/home/myoral/.config/Ultralytics' is not writeable, defaulting to '/tmp' or CWD.Alternatively you can define a YOLO_CONFIG_DIR environment variable for this path.
+INFO:     Started server process [1350874]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

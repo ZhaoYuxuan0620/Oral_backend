@@ -16,7 +16,8 @@ ALGORITHM = os.getenv("ALGORITHM")
 # Database URL (replace with your PostgreSQL credentials)
 #using NeonDB as an example
 #need another database
-DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-still-brook-a1o2ku0m-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL = "postgresql://zyx:37551000@localhost:5432/myoral_db"
+
 
 # SQLAlchemy setup for ORM (sync only)
 engine = create_engine(DATABASE_URL)
