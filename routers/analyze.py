@@ -14,6 +14,7 @@ import cv2
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import json
+import textwrap
 
 
 
@@ -22,7 +23,7 @@ router = APIRouter()
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"[DEBUG]  using device: {device}")
 # 加载YOLOv8模型（只加载一次），指定device
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '7_9_seg11m_teeth.pt')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_30best_aug.pt')
 yolo_model = YOLO(MODEL_PATH)
 yolo_model.to(device)
 
@@ -281,8 +282,10 @@ async def analyze_photos(
             recession = object_counts.get("Recession", 0)
             # YOLO模型总结
             summary_line = f"Detected: {tooth} teeth, {caries} caries, {gum_inflam} gum inflammation, {recession} gum recession."
-            c.drawString(60, y, summary_line)
-            y -= 16
+            wrap_width = width - 120  # 文字区域宽度
+            for line in textwrap.wrap(summary_line, width=60):
+                c.drawString(60, y, line)
+                y -= 14
             assessment = "The patient appears in good health with no immediate concerns during the examination."
             if caries > 0:
                 assessment = f"{caries} caries detected. Severe situation."
@@ -291,9 +294,12 @@ async def analyze_photos(
             elif recession > 0:
                 assessment = f"{recession} gum recession area(s) detected. Moderate situation."
             elif tooth == 0:
-                assessment = "No teeth detected.Please check the uploaded image or retake the photo."
-            c.drawString(60, y, assessment)
-            y -= 24
+                assessment = "No teeth detected. Please check the uploaded image or retake the photo."
+            for line in textwrap.wrap(assessment, width=60):
+                c.drawString(60, y, line)
+                y -= 14
+
+            y -= 10
 
             # Prescription
             c.setFont("Helvetica-Bold", 13)
@@ -307,8 +313,11 @@ async def analyze_photos(
                 prescription = "Please consult a dentist for further evaluation and treatment."
             elif tooth == 0:
                 prescription = "No prescription due to missing teeth detection."
-            c.drawString(60, y, prescription)
-            y -= 30
+            for line in textwrap.wrap(prescription, width=60):
+                c.drawString(60, y, line)
+                y -= 14
+
+            y -= 16
 
             # 插入mask图片和legend（legend在图片右侧）
             c.setFont("Helvetica-Bold", 13)
@@ -342,15 +351,18 @@ async def analyze_photos(
             c.drawString(legend_x, legend_y, "Legend:")
             legend_y -= 22
             c.setFont("Helvetica", 11)
-            alpha_mask = 50  # 与图片渲染一致
-            for idx, label in enumerate(class_labels):
-                if label in ["Tooth", "Caries", "GumInflam", "Recession"]:
-                    color = color_map[idx]
-                    c.setFillColorRGB(color[0]/255, color[1]/255, color[2]/255, alpha=alpha_mask/255)
-                    c.rect(legend_x, legend_y, 16, 16, fill=1, stroke=0)
-                    c.setFillColor(colors.black)
-                    c.drawString(legend_x + 22, legend_y + 2, label)
-                    legend_y -= 20
+            # 只渲染和标注 Tooth, Caries, GumInflam, Recession 四种类别，颜色与渲染一致
+            legend_classes = ["Tooth", "Caries", "GumInflam", "Recession","Gum"]
+            legend_indices = [class_labels.index(cls) for cls in legend_classes]
+            for idx in legend_indices:
+                label = class_labels[idx]
+                color = color_map[idx]
+                alpha = render_alpha / 255
+                c.setFillColorRGB(color[0]/255, color[1]/255, color[2]/255, alpha=alpha)
+                c.rect(legend_x, legend_y, 16, 16, fill=1, stroke=0)
+                c.setFillColor(colors.black)
+                c.drawString(legend_x + 22, legend_y + 2, label)
+                legend_y -= 20
 
             y = img_y - 30
 
@@ -382,41 +394,45 @@ async def analyze_photos(
             return buf
 
         h, w = mask.shape
-        # 颜色渲染
+        # 只渲染 Tooth, Caries, GumInflam, Gum, Recession 五种类别，其余全部白色
         color_map = [
             (255, 255, 255),     # 0: Background (white)
-            (255, 0, 0),         # 1: Tooth (red)
-            (0, 255, 0),         # 2: Caries (green)
-            (0, 0, 255),         # 3: GumInflam (blue)
-            (255, 255, 255),     # 4: Mouth (white, same as background, not rendered)
-            (255, 255, 0),       # 5: Gum (yellow)
+            (255, 0, 0),         # 1: Tooth (bright red)
+            (0, 255, 0),         # 2: Caries (bright green)
+            (255, 255, 0),       # 3: GumInflam (bright yellow)
+            (255, 255, 255),     # 4: Mouth (white, not rendered)
+            (0, 0, 255),         # 5: Gum (blue)
             (255, 0, 255),       # 6: Recession (magenta)
             (0, 255, 255),       # 7: Ortho (cyan)
             (255, 128, 0),       # 8: Mucosa (orange)
             (0, 0, 0),           # 9: Splint (black)
         ]
-        color_mask = np.zeros((h, w, 3), dtype=np.uint8)
-        for v, color in enumerate(color_map):
-            color_mask[mask == v] = color
-        color_mask[(mask > len(color_map) - 1)] = (255, 255, 255)
-        color_mask_pil = Image.fromarray(color_mask, mode="RGB").convert("RGBA")
+        render_alpha = 150  # 0-255, 越高越不透明
+        color_mask = np.zeros((h, w, 4), dtype=np.uint8)
+        # 只渲染五种类别，其余全部白色
+        render_classes = [1, 2, 3, 5, 6]
+        for v in range(len(color_map)):
+            color = color_map[v]
+            if v in render_classes:
+                color_mask[mask == v, :3] = color
+                color_mask[mask == v, 3] = render_alpha
+            else:
+                color_mask[mask == v, :3] = (255, 255, 255)
+                color_mask[mask == v, 3] = render_alpha
+        color_mask_pil = Image.fromarray(color_mask, mode="RGBA")
         mask_np = np.array(mask)
 
         # 画轮廓线（每种class都描边，统一用黑色，线宽2）
         contour_img = np.array(color_mask_pil).copy()
         for class_id in np.unique(mask_np):
-            if (class_id == 0) or (class_id == 4) :
+            if (class_id == 0) or (class_id == 4):
                 continue
             binary = (mask_np == class_id).astype(np.uint8) * 255
             contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            # 统一用黑色描边，线宽2
             cv2.drawContours(contour_img, contours, -1, (0, 0, 0, 255), 2)
         contour_mask_pil = Image.fromarray(contour_img).convert("RGBA")
         # 叠加到原图，增加透明度
         original_img = uploaded_img.resize(contour_mask_pil.size).convert("RGBA")
-        alpha_mask = 25  # 0-255, 80更透明
-        color_mask_pil.putalpha(alpha_mask)
-        contour_mask_pil.putalpha(50)  # 轮廓线完全不透明
         blended = Image.alpha_composite(original_img, color_mask_pil)
         blended = Image.alpha_composite(blended, contour_mask_pil)
         blended = blended.convert("RGB")
@@ -524,7 +540,7 @@ async def get_mask_id_array(
 @router.get("/analysis/report/pdf")
 async def get_pdf_report(pdf_path: str):
     """
-    读取指定路径的PDF报告并返回，支持客户端下载。
+    读取指定路径的PDF报告并返回,支持客户端下载。
     :param pdf_path: PDF文件的相对或绝对路径
     :return: FileResponse
     """
