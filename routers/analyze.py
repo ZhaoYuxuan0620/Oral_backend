@@ -27,46 +27,6 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', '6_30best_a
 yolo_model = YOLO(MODEL_PATH)
 yolo_model.to(device)
 
-# 通道字典（如需后续多通道mask可参考）
-# RED_DICT = {
-#     0: "No teeth",
-#     1: "Upper left central incisor (perm)",
-#     2: "Upper right central incisor (perm)",
-#     3: "Lower left central incisor (perm)",
-#     # ...补充完整...
-# }
-# GREEN_DICT = {
-#     0: "No issue",
-#     1: "Moderate caries",
-#     2: "Severe caries",
-#     # ...补充完整...
-# }
-# BLUE_DICT = {
-#     0: "No issue",
-#     1: "Moderate gum inflammation",
-#     2: "Severe gum inflammation",
-#     # ...补充完整...
-# }
-
-def mask_channel_to_label_image(mask: np.ndarray, channel: int, label_dict: dict) -> Image:
-    """
-    将mask的某一通道转换为文字标注图
-    """
-    img = Image.fromarray(mask[..., channel], mode="L").convert("RGB")
-    draw = ImageDraw.Draw(img)
-    font = None
-    try:
-        font = ImageFont.truetype("arial.ttf", 16)
-    except:
-        font = ImageFont.load_default()
-    h, w = mask.shape[:2]
-    step = max(1, min(h, w) // 20)
-    for y in range(0, h, step):
-        for x in range(0, w, step):
-            v = int(mask[y, x, channel])
-            label = label_dict.get(v, str(v))
-            draw.text((x, y), label, fill=(255, 0, 0), font=font)
-    return img
 
 @router.get("/analysis/mask/{userid}")
 async def get_mask_image(
@@ -280,12 +240,61 @@ async def analyze_photos(
             caries = object_counts.get("Caries", 0)
             gum_inflam = object_counts.get("GumInflam", 0)
             recession = object_counts.get("Recession", 0)
+
+            # 计算每个caries对应牙齿的面积比例及平均占比
+            caries_ratios = []
+            if caries > 0 and hasattr(results[0], "masks") and results[0].masks is not None:
+                # 获取mask和class_ids
+                masks = results[0].masks.data.cpu().numpy()  # (N, H, W)
+                if hasattr(results[0], "boxes") and hasattr(results[0].boxes, "cls"):
+                    class_ids = results[0].boxes.cls.cpu().numpy().astype(np.uint8)  # (N,)
+                else:
+                    class_ids = None
+                # 遍历所有caries实例
+                for i in range(masks.shape[0]):
+                    if class_ids is not None and class_ids[i] == 1:  # 1: Caries
+                        # 找到该caries掩码
+                        caries_mask = (masks[i] > 0.5)
+                        # 找到与该caries掩码有重叠的tooth掩码
+                        max_overlap = 0
+                        tooth_idx = -1
+                        for j in range(masks.shape[0]):
+                            if class_ids[j] == 0:  # 0: Tooth
+                                tooth_mask = (masks[j] > 0.5)
+                                overlap = np.logical_and(caries_mask, tooth_mask).sum()
+                                if overlap > max_overlap:
+                                    max_overlap = overlap
+                                    tooth_idx = j
+                        # 计算面积比例
+                        caries_pixels = caries_mask.sum()
+                        if tooth_idx >= 0:
+                            tooth_mask = (masks[tooth_idx] > 0.5)
+                            tooth_pixels = tooth_mask.sum()
+                            total_pixels = tooth_pixels + caries_pixels
+                            ratio = caries_pixels / total_pixels if total_pixels > 0 else 0
+                            caries_ratios.append(ratio)
+                        else:
+                            # 没找到对应牙齿，跳过
+                            continue
+                avg_caries_ratio = np.mean(caries_ratios) if caries_ratios else 0
+            else:
+                avg_caries_ratio = 0
+
             # YOLO模型总结
             summary_line = f"Detected: {tooth} teeth, {caries} caries, {gum_inflam} gum inflammation, {recession} gum recession."
             wrap_width = width - 120  # 文字区域宽度
             for line in textwrap.wrap(summary_line, width=60):
                 c.drawString(60, y, line)
                 y -= 14
+
+            # Caries面积比例信息
+            if caries > 0 and caries_ratios:
+                for idx, ratio in enumerate(caries_ratios):
+                    c.drawString(60, y, f"Caries {idx+1} area ratio: {ratio:.2%}")
+                    y -= 14
+                c.drawString(60, y, f"Average caries area ratio: {avg_caries_ratio:.2%}")
+                y -= 14
+
             assessment = "The patient appears in good health with no immediate concerns during the examination."
             if caries > 0:
                 assessment = f"{caries} caries detected. Severe situation."

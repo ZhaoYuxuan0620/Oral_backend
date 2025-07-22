@@ -43,6 +43,8 @@ class User(Base):
     confirmed = Column(Boolean, default=False)  # 新增：邮箱是否已确认
     confirmed_at = Column(DateTime, nullable=True)  # 新增：邮箱确认时间
     register_method = Column(String, nullable=True)  # 新增：注册方式（email/sms）
+    resetToken = Column(String, nullable=True)  # 新增：密码重置token
+    resetTokenCreatedAt = Column(DateTime, nullable=True)  # 新增：重置token生成时间
 
 
 class Photo(Base):
