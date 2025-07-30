@@ -17,8 +17,8 @@ ALGORITHM = os.getenv("ALGORITHM")
 #using NeonDB as an example
 #need another database
 #DATABASE_URL = "postgresql://zyx:37551000@localhost:5432/myoral_db"
-DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-still-brook-a1o2ku0m-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-
+#DATABASE_URL = "postgresql://neondb_owner:npg_VhGXzeoJca62@ep-still-brook-a1o2ku0m-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+DATABASE_URL = "postgresql://neondb_owner:npg_eASuUKWk6h2C@ep-morning-resonance-ad3mhqu5-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 # SQLAlchemy setup for ORM (sync only)
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -45,6 +45,9 @@ class User(Base):
     register_method = Column(String, nullable=True)  # 新增：注册方式（email/sms）
     resetToken = Column(String, nullable=True)  # 新增：密码重置token
     resetTokenCreatedAt = Column(DateTime, nullable=True)  # 新增：重置token生成时间
+    caries_number = Column(String, nullable=True)  # 新增：历史蛀牙数量tuple，字符串存储
+    recession_number = Column(String, nullable=True)  # 新增：历史recession数量tuple，字符串存储
+    #client_id = Column(String, nullable=False, default="0")  # 新增：client id，默认为0
 
 
 class Photo(Base):

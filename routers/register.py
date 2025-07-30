@@ -42,6 +42,7 @@ class UserRegistration(BaseModel):
     fullName: str = None
     birthdate: str = None
     register_method: str = "email"
+    client_id: str = "0"  # 新增字段，默认为0
     
 #响应模型
 class UserRegistrationResponse(BaseModel):
@@ -99,7 +100,8 @@ def register_user(user: UserRegistration, request: Request, db: Session = Depend
         "lastUpdatedAt": datetime.utcnow(),
         "register_method": user.register_method,
         "confirmed": True,
-        "confirmed_at": None
+        "confirmed_at": None,
+        #"client_id": user.client_id if hasattr(user, 'client_id') else "0"
     }
     insert_user(user_data, db)
     # 注释掉邮箱/短信验证及相关返回
