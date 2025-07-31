@@ -17,11 +17,8 @@ import json
 import textwrap
 from reportlab.lib.utils import ImageReader
 from reportlab.lib import colors
-from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import os
-
 
 router = APIRouter()
 
@@ -150,24 +147,9 @@ async def analyze_photos(
         # 生成PDF报告，包含mask图片和颜色说明
         def generate_pdf_report(object_counts, timestamp, mask_img, color_map, class_labels, user_info=None, caries_history=None, recession_history=None):
             # 新增历史曲线页
-            
-            
-
             buf = io.BytesIO()
             c = canvas.Canvas(buf, pagesize=A4)
             width, height = A4
-
-            # 注册自定义字体（如有ttf文件可用）
-            # pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))
-
-            # 美化：顶部蓝色渐变背景+logo
-            # c.saveState()
-            # c.setFillColor(colors.HexColor("#E3F2FD"))
-            # c.rect(0, height-100, width, 100, fill=1, stroke=0)
-            # c.setFillColor(colors.HexColor("#42A5F5"))
-            # c.rect(0, height-100, width, 30, fill=1, stroke=0)
-            # c.restoreState()
-
             # 顶部logo与信息
             logo_y = height - 60
             LIGHT_BLUE = "#42A5F5"
@@ -333,14 +315,8 @@ async def analyze_photos(
             c.line(marker_pos-4, bar_y+bar_height+10, marker_pos+4, bar_y+bar_height+10)
             c.setFillColor(colors.red)
             c.setFont("Helvetica", 9)
-            #c.drawCentredString(marker_pos, bar_y+bar_height+18, "⬆")
             y -= block_height
 
-            # Assessment 区块美化
-            # c.saveState()
-            # c.setFillColor(colors.HexColor("#E3F2FD"))
-            # c.roundRect(40, y-106, width-80, 90, 10, fill=1, stroke=0)
-            # c.restoreState()
             c.setFont("Helvetica-Bold", 14)
             c.setFillColor(colors.HexColor(LIGHT_BLUE))
             y -= 20
